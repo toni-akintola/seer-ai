@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/footer/Footer";
 
 const SCP = Source_Code_Pro({
     weight: ["200", "300", "400", "700", "800", "900"],
@@ -20,7 +21,11 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={SCP.className}>{children}</body>
+            <body
+                className={`${SCP.className} bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200`}
+            >
+                {children}
+            </body>
         </html>
     );
 }

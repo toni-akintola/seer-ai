@@ -1,15 +1,3 @@
-import {
-    DocumentTextIcon,
-    PencilSquareIcon,
-    QuestionMarkCircleIcon,
-} from "@heroicons/react/20/solid";
-import {
-    ArrowDownCircleIcon,
-    CpuChipIcon,
-    HomeModernIcon,
-} from "@heroicons/react/24/outline";
-import { Cog6ToothIcon } from "@heroicons/react/24/solid";
-import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -36,7 +24,7 @@ const features = [
 
 const Product = (props: Props) => {
     return (
-        <div className="col-span-5 grid h-screen grid-cols-4 border-gray-300 bg-white">
+        <div className="col-span-5 grid h-screen grid-cols-4 border-gray-300">
             <div className="col-span-2 m-4 mx-auto grid max-w-2xl justify-center rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-lg">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Transcript

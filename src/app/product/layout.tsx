@@ -1,6 +1,5 @@
 import RootLayout from "@/app/layout";
 import Sidebar from "@/components/layout/Sidebar";
-import { ReactElement } from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (

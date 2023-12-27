@@ -4,11 +4,11 @@ import {
     PencilSquareIcon,
     QuestionMarkCircleIcon,
     HomeIcon,
+    CreditCardIcon,
 } from "@heroicons/react/20/solid";
 import { CpuChipIcon } from "@heroicons/react/24/outline";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
-import Image from "next/image";
 
 const items = [
     {
@@ -28,18 +28,23 @@ const items = [
     },
     {
         name: "About",
-        href: "/hero",
+        href: "/",
         icon: <QuestionMarkCircleIcon className="h-8 w-8 text-white" />,
+    },
+    {
+        name: "Buy More Credits",
+        href: "/product/transaction",
+        icon: <CreditCardIcon className="h-8 w-8 text-white" />,
     },
 ];
 
 const Sidebar: React.FunctionComponent = () => {
     return (
-        <div className="grid h-full flex-col space-y-24 rounded-sm bg-teal-400 px-4 py-4">
-            <Link href="/hero">
+        <div className="grid h-full flex-col space-y-24 rounded-sm border-r border-gray-900/10 bg-teal-400 px-4 py-4">
+            <Link href="/">
                 <CpuChipIcon className="h-16 w-16 text-white" />
             </Link>
-            <div className="flex flex-col items-center space-y-6">
+            <div className="flex flex-col justify-center space-y-3 rounded-md bg-teal-500">
                 {items.map((item) => (
                     <Link
                         key={item.name}
@@ -53,14 +58,20 @@ const Sidebar: React.FunctionComponent = () => {
                     </Link>
                 ))}
             </div>
-            <div className="flex flex-col gap-y-6 self-end">
-                <div className="flex w-full flex-row items-center space-x-5 rounded-md bg-teal-500 p-2 hover:bg-teal-900 ">
+            <div className="flex flex-col justify-center space-y-3 self-end rounded-md bg-teal-500">
+                <Link
+                    className="flex w-full flex-row items-center space-x-5 rounded-md bg-teal-500 p-2 hover:bg-teal-900 "
+                    href="/"
+                >
                     <Cog6ToothIcon className="h-8 w-8 text-white" />
                     <p className="text-base font-semibold text-white">
                         Settings
                     </p>
-                </div>
-                <div className="flex w-full flex-row items-center space-x-5 rounded-md bg-teal-500 p-2 hover:bg-teal-900 ">
+                </Link>
+                <Link
+                    className="flex w-full flex-row items-center space-x-5 rounded-md bg-teal-500 p-2 hover:bg-teal-900 "
+                    href="/"
+                >
                     <img
                         className="inline-block h-8 w-8 rounded-full"
                         width={8}
@@ -71,7 +82,7 @@ const Sidebar: React.FunctionComponent = () => {
                     <p className="text-base font-semibold text-white">
                         Toni Akintola
                     </p>
-                </div>
+                </Link>
             </div>
         </div>
     );
