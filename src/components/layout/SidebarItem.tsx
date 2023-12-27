@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const SidebarItem = (props: Props) => {
-  return (
-    <div>SidebarItem</div>
-  )
-}
+    return <div>SidebarItem</div>;
+};
 
-export default SidebarItem
+export default SidebarItem;

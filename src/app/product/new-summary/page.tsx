@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+export interface Props {}
 
 const NewSummary = (props: Props) => {
-  return (
-    <div>NewSummary</div>
-  )
-}
+    return <div>NewSummary</div>;
+};
 
-export default NewSummary
+export default NewSummary;

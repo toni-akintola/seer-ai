@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 
-const SCP = Source_Code_Pro({ weight: [ "200", "300", "400", "700", "800", "900" ], style: ["normal", "italic"], subsets: ["latin"] });
+const SCP = Source_Code_Pro({
+    weight: ["200", "300", "400", "700", "800", "900"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "Create Next App",
