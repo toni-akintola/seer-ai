@@ -4,13 +4,14 @@ import { PencilSquareIcon, QuestionMarkCircleIcon } from '@heroicons/react/20/so
 import { PlusCircleIcon } from '@heroicons/react/20/solid'
 import { ArrowDownCircleIcon, CpuChipIcon, HomeModernIcon } from '@heroicons/react/24/outline'
 import { Cog6ToothIcon } from '@heroicons/react/24/solid'
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {}
 
 const items = [
   { name: "Home", href: "", icon: <HomeIcon className='w-8 h-8 text-white'/> }, { name: "Summaries", href: "", icon: <PlusCircleIcon className='w-8 h-8 text-white' /> }, { name: "New Summary", href: "", icon: <PencilSquareIcon className='h-8 w-8 text-white'/> }, 
-  { name: "About", href: "", icon: <QuestionMarkCircleIcon className='h-8 w-8 text-white'/>, }
+  { name: "About", href: "/hero", icon: <QuestionMarkCircleIcon className='h-8 w-8 text-white'/>, }
 ]
 const navigation = [
     { name: "Product", href: "/product" },
@@ -24,16 +25,16 @@ const Product = (props: Props) => {
           <CpuChipIcon className='text-white h-16 w-16'/>
           <div className='flex flex-col space-y-6 items-center'>
             {items.map((item) => (
-              <div key={item.name} className='flex bg-indigo-700 flex-row items-center p-2 space-x-5 w-full rounded-md hover:bg-indigo-900 '>
+              <Link key={item.name} href={item.href} className='flex bg-indigo-700 flex-row items-center p-2 space-x-5 w-full rounded-md hover:bg-indigo-900 '>
               {item.icon}
-              <p className='text-base text-gray-200 font-semibold'>{item.name}</p>
-            </div>
+              <p className='text-base text-white font-extrabold'>{item.name}</p>
+            </Link>
             ))}
           </div>
           <div className='flex'>
              <div className='flex self-end bg-indigo-700 flex-row items-center p-2 space-x-5 w-full rounded-md hover:bg-indigo-900 '>
               <Cog6ToothIcon className='h-8 w-8 text-white' />
-              <p className='text-base text-gray-200 font-semibold'>Settings</p>
+              <p className='text-base text-white font-semibold'>Settings</p>
             </div>
           </div>
         </div>
