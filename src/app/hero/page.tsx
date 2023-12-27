@@ -3,12 +3,11 @@ import React from "react";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { CpuChipIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const navigation = [
-    { name: "Product", href: "#" },
+    { name: "Product", href: "/product" },
     { name: "Features", href: "#" },
-    { name: "Marketplace", href: "#" },
-    { name: "Company", href: "#" },
 ];
 
 type Props = {};
@@ -17,7 +16,7 @@ const Hero = (props: Props) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <div className="bg-gradient-to-br flex from-indigo-800 via-rose-400 to-amber-200 h-full w-full justify-center">
+        <div className="flex bg-gradient-to-b from-indigo-800 via-rose-400 to-amber-200 h-full w-full justify-center">
             <header className="absolute inset-x-0 top-0 z-50">
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -38,16 +37,16 @@ const Hero = (props: Props) => {
                             <span className="sr-only">Open main menu</span>
                         </button>
                     </div>
-                    <div className="hidden lg:flex lg:gap-x-12">
+                    <div className="hidden lg:flex lg:gap-x-24">
                         {navigation.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm font-semibold leading-6 text-white flex-row flex items-center gap-x-3"
+                                className="text-base font-semibold leading-6 text-white flex-row flex items-center gap-x-3"
                             >
                                 {item.name}
                                 <p>&rarr;</p>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -114,7 +113,7 @@ const Hero = (props: Props) => {
                     </Dialog.Panel>
                 </Dialog>
             </header>
-            <div className="relative isolate px-6 pt-14 mb-64 lg:px-8 flex">
+            <div className="relative isolate px-6 pt-14 mb-72 lg:px-8 flex">
                 <div
                     className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
                     aria-hidden="true"
@@ -127,24 +126,19 @@ const Hero = (props: Props) => {
                         }}
                     />
                 </div>
-                <div className="mx-auto max-w-2xl pt-64 sm:py-42 lg:pt-58">
+                <div className="mx-auto max-w-2xl pt-64 mb-24 sm:py-42 lg:pt-58">
                     <div className="text-center space-y-12">
                         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
                             A GPT-powered personal assistant for students
                         </h1>
-                        <input
-                            type="text"
-                            id="first_name"
-                            className="my-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-rose-400 focus:border-rose-400 flex-1 w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-rose-400"
-                            placeholder="Sign Up Here!"
-                        />
+
                         <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <a
-                                href="#"
+                            <Link
+                                href="/product"
                                 className="rounded-md bg-rose-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Get started
-                            </a>
+                            </Link>
                             <a
                                 href="#"
                                 className="text-sm font-semibold leading-6 text-white"
