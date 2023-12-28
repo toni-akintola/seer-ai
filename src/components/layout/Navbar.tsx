@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
             >
                 <CpuChipIcon className="h-16 w-16 text-white" />
                 <h1 className="text-xl font-extrabold tracking-tight text-white">
-                    The Future
+                    Next Future
                 </h1>
             </Link>
              <div className="flex flex-row justify-center space-x-3 rounded-md">
@@ -49,7 +49,7 @@ const Navbar = (props: Props) => {
                         alt=""
                     />
                     <p className="text-base font-semibold text-white">
-                        Toni Akintola
+                        Ryan
                     </p>
                 </Link>
             </div>
