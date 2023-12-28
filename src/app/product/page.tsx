@@ -25,7 +25,7 @@ const features = [
 const Product = (props: Props) => {
     return (
         <div className="col-span-4 grid h-screen grid-cols-4 border-gray-300 lg:col-span-7">
-            <div className="col-span-2 m-4 mx-auto grid max-w-2xl justify-center rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-lg">
+            <div className="col-span-2 m-4 mx-auto grid max-w-2xl justify-center rounded-lg border overflow-scroll border-gray-200 bg-white px-6 py-4 shadow-lg">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     Transcript
                 </h2>

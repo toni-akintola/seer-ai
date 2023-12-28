@@ -1,17 +1,17 @@
-import GoogleButton from "@/components/misc/GoogleButton";
-import MSButton from "@/components/misc/MSButton";
-import Link from "next/link";
-import React from "react";
+import GoogleButton from '@/components/misc/GoogleButton';
+import MSButton from '@/components/misc/MSButton';
+import Link from 'next/link';
+import React from 'react'
 
-type Props = {};
+type Props = {}
 
-const Login = (props: Props) => {
-    return (
+const SignUp = (props: Props) => {
+  return (
         <>
             <div className="mt-10 flex h-screen flex-1 flex-col justify-center px-6 py-20 lg:px-8">
                 <div className="flex flex-col items-center justify-center sm:mx-auto sm:w-full sm:max-w-sm">
                     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-                        Sign in to your account
+                        Sign up for an account
                     </h2>
                 </div>
 
@@ -79,18 +79,18 @@ const Login = (props: Props) => {
                     </form>
 
                     <p className="mb-5 mt-10 text-center text-sm text-white">
-                        Not a member?{" "}
+                        Already have an account?{" "}
                         <Link
-                            href="/sign-up"
+                            href="/login"
                             className="font-semibold leading-6 text-teal-800 hover:text-teal-500"
                         >
-                            Sign up here.
+                            Sign in here.
                         </Link>
                     </p>
                 </div>
             </div>
         </>
     );
-};
+}
 
-export default Login;
+export default SignUp
