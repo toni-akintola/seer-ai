@@ -11,7 +11,7 @@ type Props = {};
 
 const Hero = (props: Props) => {
     return (
-        <div className="flex h-screen justify-center">
+        <div className="flex h-screen justify-center bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200">
             <header className="absolute inset-x-0 top-0 z-50">
                 <nav
                     className="flex items-center justify-between p-6 lg:px-8"
@@ -24,7 +24,7 @@ const Hero = (props: Props) => {
                         </a>
                     </div>
                     <div className="flex lg:hidden"></div>
-                    <div className="hidden lg:flex lg:gap-x-24">
+                    <div className="flex gap-x-7 lg:gap-x-24">
                         {navigation.map((item) => (
                             <Link
                                 key={item.name}

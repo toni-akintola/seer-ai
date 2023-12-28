@@ -16,6 +16,16 @@
     }
 }
 
+@layer {
+    .backy {
+        background-image: linear-gradient(
+            153.68deg,
+            #17191d 0%,
+            #0c152c 45.82%
+        );
+    }
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(

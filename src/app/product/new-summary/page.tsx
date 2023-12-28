@@ -5,7 +5,7 @@ export interface Props {}
 
 const NewSummary = (props: Props) => {
     return (
-        <div className="col-span-5 m-5 grid">
+        <div className="col-span-7 m-5 grid">
             <RawForm />
         </div>
     );

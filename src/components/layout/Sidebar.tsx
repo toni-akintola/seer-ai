@@ -32,7 +32,7 @@ const items = [
         icon: <QuestionMarkCircleIcon className="h-8 w-8 text-white" />,
     },
     {
-        name: "Buy More Credits",
+        name: "Buy Credits",
         href: "/product/transaction",
         icon: <CreditCardIcon className="h-8 w-8 text-white" />,
     },
@@ -40,9 +40,15 @@ const items = [
 
 const Sidebar: React.FunctionComponent = () => {
     return (
-        <div className="grid h-full flex-col space-y-24 rounded-sm border-r border-gray-900/10 bg-teal-400 px-4 py-4">
-            <Link href="/">
+        <div className="grid h-full flex-col gap-y-4 rounded-sm border-r border-gray-900/10 bg-teal-400 px-4 py-4">
+            <Link
+                className="flex h-1/2 flex-row items-center space-x-4"
+                href="/"
+            >
                 <CpuChipIcon className="h-16 w-16 text-white" />
+                <h1 className="text-xl font-extrabold tracking-tight text-white">
+                    The Future
+                </h1>
             </Link>
             <div className="flex flex-col justify-center space-y-3 rounded-md bg-teal-500">
                 {items.map((item) => (
