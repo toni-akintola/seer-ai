@@ -41,7 +41,7 @@ const items = [
 const Sidebar: React.FunctionComponent = () => {
   return (
     <div className='grid flex-col gap-y-4 border-r border-gray-900/10 bg-teal-400 px-4 py-4'>
-      <div className='flex flex-col justify-center space-y-3 rounded-md bg-teal-500'>
+      <div className='flex flex-col justify-center space-y-3 rounded-md'>
         {items.map(item => (
           <Link
             key={item.name}
