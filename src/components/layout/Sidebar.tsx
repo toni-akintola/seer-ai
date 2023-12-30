@@ -6,8 +6,6 @@ import {
   HomeIcon,
   CreditCardIcon,
 } from '@heroicons/react/20/solid'
-import { CpuChipIcon } from '@heroicons/react/24/outline'
-import { Cog6ToothIcon } from '@heroicons/react/24/solid'
 import Link from 'next/link'
 
 const items = [

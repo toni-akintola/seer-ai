@@ -7,9 +7,12 @@ import {
 import React from 'react'
 import Link from 'next/link'
 
-type Props = {}
+export interface NavBarProps {
+  image?: string
+  name: string
+}
 
-const Navbar = (props: Props) => {
+const Navbar = (props: NavBarProps) => {
   return (
     <div className='bg-teal-400 flex border border-gray-900/10 px-4 justify-between'>
       <Link className='flex h-1/2 flex-row items-center space-x-4' href='/'>
@@ -30,18 +33,22 @@ const Navbar = (props: Props) => {
           className='flex w-full flex-row items-center space-x-5 rounded-md p-2 hover:bg-teal-900 '
           href='/'
         >
-          <img
-            className='inline-block h-8 w-8 rounded-full'
-            width={8}
-            height={8}
-            src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80'
-            alt=''
-          />
-          <p className='text-base font-semibold text-white'>Ryan</p>
+          {props.image ? (
+            <img
+              className='inline-block h-8 w-8 rounded-full'
+              width={8}
+              height={8}
+              src={props.image}
+              alt=''
+            />
+          ) : (
+            <div className='h-8 w-8 rounded-full bg-gradient-to-b from-indigo-600 via-rose-400 to-amber-200'></div>
+          )}
+          <p className='text-base font-semibold text-white'>{props.name}</p>
         </Link>
         <Link
           className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
-          href='/'
+          href='/api/auth/signout'
         >
           <ArrowRightCircleIcon className='h-8 w-8 text-white' />
           <p className='text-base font-semibold text-white text-nowrap'>

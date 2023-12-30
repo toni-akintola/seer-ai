@@ -38,7 +38,7 @@ const Hero = (props: Props) => {
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
             <Link
-              href='/login'
+              href='/api/auth/signin'
               className='text-sm font-semibold leading-6 text-white'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
