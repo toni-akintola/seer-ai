@@ -1,4 +1,5 @@
 import {
+  ArrowRightCircleIcon,
   Cog6ToothIcon,
   CpuChipIcon,
 } from '@heroicons/react/24/outline'
@@ -37,6 +38,15 @@ const Navbar = (props: Props) => {
             alt=''
           />
           <p className='text-base font-semibold text-white'>Ryan</p>
+        </Link>
+        <Link
+          className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
+          href='/'
+        >
+          <ArrowRightCircleIcon className='h-8 w-8 text-white' />
+          <p className='text-base font-semibold text-white text-nowrap'>
+            Sign Out
+          </p>
         </Link>
       </div>
     </div>
