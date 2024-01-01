@@ -1,31 +1,31 @@
-import axios from "axios"
-import tokenizer from "gpt-tokenizer"
-import { atom } from "jotai"
+import axios from 'axios'
+import tokenizer from 'gpt-tokenizer'
+import { atom } from 'jotai'
 
-import { ChatGPTMessage } from "../../types/openai"
+import { ChatGPTMessage } from '../../types/openai'
 
-tokenizer.modelName = "gpt-3.5-turbo"
+tokenizer.modelName = 'gpt-3.5-turbo'
 
-export const apiKeyAtom = atom<string>("")
+export const apiKeyAtom = atom<string>('')
 
 // Atoms for Transcription
-export const fileNameAtom = atom<string>("")
-export const fileTypeAtom = atom<"vtt" | "srt">("vtt")
+export const fileNameAtom = atom<string>('')
+export const fileTypeAtom = atom<'vtt' | 'srt'>('vtt')
 export const formDataAtom = atom<FormData | null>(null)
-export const transcriptionAtom = atom<string>("")
+export const transcriptionAtom = atom<string>('')
 export const handlingAtom = atom(false)
-export const formStateAtom = atom((get) => {
+export const formStateAtom = atom(get => {
   const transcription = get(transcriptionAtom)
-  return !transcription ? "transcribe" : "translate"
+  return !transcription ? 'transcribe' : 'translate'
 })
 export const transcriptionHandlerAtom = atom(
   null,
   async (_get, set, formData: FormData) => {
     try {
       set(handlingAtom, true)
-      const { data } = await axios.post("/api/transcribe", formData)
+      const { data } = await axios.post('/api/transcribe', formData)
       if (!data) {
-        throw new Error("No data from response.")
+        throw new Error('No data from response.')
       }
       set(transcriptionAtom, data.data)
       set(handlingAtom, false)
@@ -34,32 +34,32 @@ export const transcriptionHandlerAtom = atom(
       console.log(error.response.data.message)
       throw new Error(error.response.data.message)
     }
-  }
+  },
 )
 
 // Atoms for Translation
-export const languageAtom = atom<string>("spanish")
-const messagesAtom = atom<ChatGPTMessage[]>((get) => {
+export const languageAtom = atom<string>('spanish')
+const messagesAtom = atom<ChatGPTMessage[]>(get => {
   const transcription = get(transcriptionAtom)
   const language = get(languageAtom)
   return [
     {
-      role: "system",
+      role: 'system',
       content:
-        "You are a translator machine. Your mission is translating srt or vtt files into the language provided. Do not change the format of the file. Only return the translated file.",
+        'You are a translator machine. Your mission is translating srt or vtt files into the language provided. Do not change the format of the file. Only return the translated file.',
     },
     {
-      role: "user",
+      role: 'user',
       content: `Please translate this file into ${language}. File: ${transcription}`,
     },
   ]
 })
-const tokenSizeAtom = atom((get) => {
+const tokenSizeAtom = atom(get => {
   const maxTokenSize = 4096 // This is the token size limit of gpt-3.5-turbo
   const messages = get(messagesAtom)
   const currentTokenSize = tokenizer.encodeChat(
     messages,
-    "gpt-3.5-turbo"
+    'gpt-3.5-turbo',
   ).length
   const remainingTokenSize = maxTokenSize - currentTokenSize
   return {
@@ -70,16 +70,16 @@ const tokenSizeAtom = atom((get) => {
     canTokenSizeBeExceeded: maxTokenSize - currentTokenSize * 2 < 0,
   }
 })
-export const tokenSizeMessageAtom = atom((get) => {
+export const tokenSizeMessageAtom = atom(get => {
   const tokenSize = get(tokenSizeAtom)
   if (tokenSize.isTokenSizeExceeded) {
     return {
-      type: "error",
+      type: 'error',
       message: `Maximum token size(${tokenSize.maxTokenSize}) exceeded. Please reduce the size of the file.`,
     }
   } else if (tokenSize.canTokenSizeBeExceeded) {
     return {
-      type: "warning",
+      type: 'warning',
       message: `You are in the limit of the token size${
         tokenSize.maxTokenSize
       } however when you include the response (multiplying current token size (${
@@ -90,7 +90,7 @@ export const tokenSizeMessageAtom = atom((get) => {
     }
   } else {
     return {
-      type: "success",
+      type: 'success',
       message: `Token size: ${tokenSize.currentTokenSize}`,
     }
   }
@@ -99,10 +99,10 @@ export const translateHandlerAtom = atom(null, async (get, set) => {
   const messages = get(messagesAtom)
   try {
     set(handlingAtom, true)
-    const response = await fetch("/api/translate", {
-      method: "POST",
+    const response = await fetch('/api/translate', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         max_tokens: get(tokenSizeAtom).remainingTokenSize,
@@ -112,15 +112,15 @@ export const translateHandlerAtom = atom(null, async (get, set) => {
     })
 
     if (!response.ok) {
-      console.log("Response not ok", response)
+      console.log('Response not ok', response)
       throw new Error(response.statusText)
     }
 
     // This data is a ReadableStream
     const data = response.body
     if (!data) {
-      console.log("No data from response.", data)
-      throw new Error("No data from response.")
+      console.log('No data from response.', data)
+      throw new Error('No data from response.')
     }
 
     const reader = data.getReader()
@@ -128,15 +128,15 @@ export const translateHandlerAtom = atom(null, async (get, set) => {
     let done = false
 
     // Set transcription to empty
-    set(transcriptionAtom, "")
+    set(transcriptionAtom, '')
 
     while (!done) {
-      console.log("Reading...")
+      console.log('Reading...')
       const { value, done: doneReading } = await reader.read()
       done = doneReading
       const chunkValue = decoder.decode(value)
       // Set transcription
-      set(transcriptionAtom, (prev) => prev + chunkValue)
+      set(transcriptionAtom, prev => prev + chunkValue)
     }
   } catch (error: any) {
     console.log(error)

@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from 'next/server'
 
-import { OpenAIStream } from "../../../../lib/openai"
+import { OpenAIStream } from '../../../../lib/openai'
 
 export async function POST(request: Request) {
   // Get formData from request
@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
   try {
     const stream = await OpenAIStream({
-      model: "gpt-3.5-turbo",
+      model: 'gpt-3.5-turbo',
       messages,
       max_tokens,
       temperature: 0.9,
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     console.log(error.response.data.error.message)
     return NextResponse.json({
-      message: error?.response?.data?.error?.message ?? "An error occured.",
+      message: error?.response?.data?.error?.message ?? 'An error occured.',
     })
   }
 }
