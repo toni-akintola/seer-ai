@@ -66,6 +66,7 @@ const RawForm = (props: Props) => {
                   <p className='text-xs leading-5 text-gray-600'>
                     PNG, JPG, GIF, MP4, MOV, etc. up to 25MB
                   </p>
+                  <button className='bg-teal-400 rounded-md p-2 m-4 w-full text-white font-bold hover:bg-teal-500' type='button'>Transcribe</button>
                 </div>
               </div>
             </div>
