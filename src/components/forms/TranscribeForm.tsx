@@ -1,9 +1,15 @@
 import React from 'react'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import { fileNameAtom, fileTypeAtom, handlingAtom, transcriptionHandlerAtom } from '@/atoms/transcription-atoms'
+import { useAtomValue, useSetAtom } from 'jotai'
 
 type Props = {}
 
-const RawForm = (props: Props) => {
+const TranscribeForm = (props: Props) => {
+  const handling = useAtomValue(handlingAtom)
+  const submitHandler = useSetAtom(transcriptionHandlerAtom)
+  const setFileName = useSetAtom(fileNameAtom)
+  const setFileTYpe = useSetAtom(fileTypeAtom)
   return (
     <form>
       <div className='space-y-24'>
@@ -82,4 +88,4 @@ const RawForm = (props: Props) => {
   )
 }
 
-export default RawForm
+export default TranscribeForm

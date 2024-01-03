@@ -1,4 +1,4 @@
-import RawForm from '@/components/forms/RawForm'
+import RawForm from '@/components/forms/TranscribeForm'
 import React from 'react'
 
 export interface Props {}
