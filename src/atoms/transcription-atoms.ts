@@ -80,13 +80,11 @@ export const tokenSizeMessageAtom = atom(get => {
   } else if (tokenSize.canTokenSizeBeExceeded) {
     return {
       type: 'warning',
-      message: `You are in the limit of the token size${
+      message: `You are within the max token size limit ${
         tokenSize.maxTokenSize
-      } however when you include the response (multiplying current token size (${
-        tokenSize.currentTokenSize
-      }) by 2 = ${
+      }, however when you include the response size ${
         tokenSize.currentTokenSize * 2
-      }) the token size will be exceeded. Please reduce the size of the file.`,
+      }), the maximum token size will be exceeded. Please reduce the size of the file.`,
     }
   } else {
     return {

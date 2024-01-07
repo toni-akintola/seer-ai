@@ -7,7 +7,7 @@ import {
   transcriptionHandlerAtom,
 } from '@/atoms/transcription-atoms'
 import { useAtomValue, useSetAtom } from 'jotai'
-import { Input } from '@/components/forms/FileUploadInput'
+import { FileUploadInput } from '@/components/form/FileUploadInput'
 
 type Props = {}
 
@@ -66,7 +66,7 @@ const TranscribeForm = (props: Props) => {
                     aria-hidden='true'
                   />
                   <div className='mt-4 flex items-center text-sm leading-6 text-gray-600'>
-                        <Input
+                        <FileUploadInput
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             setFileName(e?.target?.files?.[0]?.name as string)
           }}

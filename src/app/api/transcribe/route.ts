@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   language: string (optional)
   */
   formData.append('model', 'whisper-1')
-  const apiKEY = process.env.OPENAI_API_KEY || formData.get('api_key')
+  const apiKEY = process.env.OPENAI_API_KEY
 
   if (!apiKEY) {
     return NextResponse.json(

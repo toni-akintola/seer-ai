@@ -2,7 +2,7 @@ import { options } from '@/app/api/auth/[...nextauth]/options'
 import { getServerSession } from 'next-auth'
 
 import Login from '@/app/login/page'
-import GPTInput from '@/components/forms/GPTInput'
+import GPTInput from '@/components/form/GPTInput'
 import React from 'react'
 
 type Props = {}

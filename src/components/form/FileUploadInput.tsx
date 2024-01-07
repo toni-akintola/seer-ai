@@ -5,7 +5,7 @@ import * as React from "react"
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const FileUploadInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ type, ...props }, ref) => {
     return (
       <input
@@ -18,6 +18,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
-Input.displayName = "Input"
+FileUploadInput.displayName = "Input"
 
-export { Input }
+export { FileUploadInput }

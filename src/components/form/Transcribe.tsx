@@ -1,8 +1,8 @@
 'use client'
 
 import { formStateAtom } from '@/atoms/transcription-atoms'
-import TranscribeForm from '@/components/forms/TranscribeForm'
-import TranscriptionEditForm from '@/components/forms/TranscriptionEditForm'
+import TranscribeForm from '@/components/form/TranscribeForm'
+import TranscriptionEditForm from '@/components/form/TranscriptionEditForm'
 import { useAtomValue } from 'jotai'
 
 import React from 'react'
