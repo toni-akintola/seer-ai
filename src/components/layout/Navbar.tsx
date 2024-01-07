@@ -18,7 +18,7 @@ const Navbar = (props: NavBarProps) => {
       <Link className='flex h-1/2 flex-row items-center space-x-4' href='/'>
         <CpuChipIcon className='h-16 w-16 text-white' />
         <h1 className='text-xl font-extrabold tracking-tight text-white'>
-          Next Future
+          Seer
         </h1>
       </Link>
       <div className='flex flex-row justify-center space-x-3 rounded-md'>

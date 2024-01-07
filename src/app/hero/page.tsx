@@ -1,6 +1,7 @@
 import React from 'react'
 import { CpuChipIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
+import { SparklesIcon } from '@heroicons/react/24/solid'
 
 const navigation = [
   { name: 'Product', href: '/product' },
@@ -17,11 +18,16 @@ const Hero = (props: Props) => {
           className='flex items-center justify-between p-6 lg:px-8'
           aria-label='Global'
         >
-          <div className='flex lg:flex-1 '>
-            <a href='#' className='-m-1.5 p-1.5'>
-              <span className='sr-only'>Your Company</span>
-              <CpuChipIcon className='h-16 w-16 text-white' />
-            </a>
+          <div className='flex lg:flex-1'>
+            <Link
+              href='#'
+              className='-m-1.5 p-1.5 flex-row items-center flex space-x-3'
+            >
+              <SparklesIcon className='h-12 w-12 text-white' />
+              <h1 className='text-xl font-extrabold tracking-tight text-white'>
+                Seer
+              </h1>
+            </Link>
           </div>
           <div className='flex lg:hidden'></div>
           <div className='flex gap-x-7 lg:gap-x-24'>

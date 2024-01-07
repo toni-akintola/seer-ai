@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   file: File
   model: string
   response_format: string
-  propmt: string
+  prompt: string
   language: string (optional)
   */
   formData.append('model', 'whisper-1')
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message:
-          'You need to set your API Key as env varibale or with the input.',
+          'You need to set your API Key as env variable or with the input.',
       },
       { status: 401, statusText: 'Unauthorized' },
     )

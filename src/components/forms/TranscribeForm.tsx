@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { FormEvent } from 'react'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { fileNameAtom, fileTypeAtom, handlingAtom, transcriptionHandlerAtom } from '@/atoms/transcription-atoms'
+import {
+  fileNameAtom,
+  fileTypeAtom,
+  handlingAtom,
+  transcriptionHandlerAtom,
+} from '@/atoms/transcription-atoms'
 import { useAtomValue, useSetAtom } from 'jotai'
+import { Input } from '@/components/forms/FileUploadInput'
 
 type Props = {}
 
@@ -9,9 +15,15 @@ const TranscribeForm = (props: Props) => {
   const handling = useAtomValue(handlingAtom)
   const submitHandler = useSetAtom(transcriptionHandlerAtom)
   const setFileName = useSetAtom(fileNameAtom)
-  const setFileTYpe = useSetAtom(fileTypeAtom)
+  const setFileType = useSetAtom(fileTypeAtom)
   return (
-    <form>
+    <form
+      onSubmit={(event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        const formData = new FormData(event.currentTarget)
+        submitHandler(formData)
+      }}
+    >
       <div className='space-y-24'>
         <div className='border-b border-gray-900/10 pb-12'>
           <h2 className='text-xl font-bold leading-7 text-gray-900'>
@@ -31,13 +43,12 @@ const TranscribeForm = (props: Props) => {
                 What kind of summary would you like? (optional)
               </label>
               <div className='mt-2'>
-                <textarea
-                  id='about'
-                  name='about'
-                  rows={3}
+                <input
+                  id='prompt'
+                  name='prompt'
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                   defaultValue={''}
-                />
+                ></input>
               </div>
             </div>
 
@@ -55,28 +66,30 @@ const TranscribeForm = (props: Props) => {
                     aria-hidden='true'
                   />
                   <div className='mt-4 flex items-center text-sm leading-6 text-gray-600'>
-                    <label
-                      htmlFor='file-upload'
-                      className='relative cursor-pointer rounded-md bg-white px-2 font-semibold text-teal-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-teal-600 focus-within:ring-offset-2 hover:text-teal-500'
-                    >
-                      <span>Upload a file</span>
-                      <input
-                        id='file-upload'
-                        name='file-upload'
-                        type='file'
-                        className='sr-only'
-                      />
-                    </label>
-                    <p className='pl-1'>or drag and drop</p>
+                        <Input
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setFileName(e?.target?.files?.[0]?.name as string)
+          }}
+          type="file"
+          max={25 * 1024 * 1024}
+          accept="audio/*,video/*"
+          name="file"
+        />
+                   
                   </div>
                   <p className='text-xs leading-5 text-gray-600'>
                     PNG, JPG, GIF, MP4, MOV, etc. up to 25MB
                   </p>
+                  <input name='response_format' defaultValue="vtt"></input>
                   <button
                     className='bg-teal-400 rounded-md p-2 m-4 w-full text-white font-bold hover:bg-teal-500'
-                    type='button'
+                    type='submit'
                   >
-                    Transcribe
+                    {!handling ? (
+                      'Transcribe'
+                    ) : (
+                      <span className='animate-pulse'>Transcribing...</span>
+                    )}{' '}
                   </button>
                 </div>
               </div>

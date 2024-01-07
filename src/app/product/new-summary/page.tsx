@@ -1,4 +1,5 @@
-import RawForm from '@/components/forms/TranscribeForm'
+'use client'
+import Transcribe from '@/components/forms/Transcribe'
 import React from 'react'
 
 export interface Props {}
@@ -6,7 +7,7 @@ export interface Props {}
 const NewSummary = (props: Props) => {
   return (
     <div className='col-span-7 m-5 grid'>
-      <RawForm />
+      <Transcribe />
     </div>
   )
 }
