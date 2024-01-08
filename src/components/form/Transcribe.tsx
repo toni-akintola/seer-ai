@@ -13,7 +13,13 @@ const Transcribe = (props: Props) => {
   const formState = useAtomValue(formStateAtom)
 
   return (
-    <div>{formState === 'transcribe' ? <TranscribeForm /> : <TranscriptionEditForm/>}</div>
+    <div>
+      {formState === 'transcribe' ? (
+        <TranscribeForm />
+      ) : (
+        <TranscriptionEditForm />
+      )}
+    </div>
   )
 }
 

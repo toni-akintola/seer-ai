@@ -1,13 +1,18 @@
+import { signIn } from 'next-auth/react'
 import React from 'react'
 
 type Props = {}
 
 const GoogleButton = (props: Props) => {
+  const handleClick = () => {
+    signIn("google")
+  };
   return (
     <div className='flex w-full justify-center'>
       <button
         aria-label='Google Sign In'
         className='border-button-border-light flex items-center space-x-2 rounded-md border bg-white p-2 pr-3 w-3/4'
+        onClick={handleClick}
       >
         <div className='flex w-12 items-center justify-center rounded-l bg-white'>
           <svg

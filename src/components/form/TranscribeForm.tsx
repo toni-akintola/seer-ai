@@ -66,21 +66,20 @@ const TranscribeForm = (props: Props) => {
                     aria-hidden='true'
                   />
                   <div className='mt-4 flex items-center text-sm leading-6 text-gray-600'>
-                        <FileUploadInput
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setFileName(e?.target?.files?.[0]?.name as string)
-          }}
-          type="file"
-          max={25 * 1024 * 1024}
-          accept="audio/*,video/*"
-          name="file"
-        />
-                   
+                    <FileUploadInput
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setFileName(e?.target?.files?.[0]?.name as string)
+                      }}
+                      type='file'
+                      max={25 * 1024 * 1024}
+                      accept='audio/*,video/*'
+                      name='file'
+                    />
                   </div>
                   <p className='text-xs leading-5 text-gray-600'>
                     PNG, JPG, GIF, MP4, MOV, etc. up to 25MB
                   </p>
-                  <input name='response_format' defaultValue="vtt"></input>
+                  <input name='response_format' defaultValue='vtt'></input>
                   <button
                     className='bg-teal-400 rounded-md p-2 m-4 w-full text-white font-bold hover:bg-teal-500'
                     type='submit'

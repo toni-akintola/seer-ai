@@ -15,12 +15,12 @@ const items = [
     icon: <HomeIcon className='h-8 w-8 text-white' />,
   },
   {
-    name: 'New Summary',
+    name: 'New Note',
     href: '/product/new-summary',
     icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
   },
   {
-    name: 'Summaries',
+    name: 'Note',
     href: '/product/summaries',
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
   },

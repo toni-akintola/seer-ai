@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const body = await request.json()
   const { max_tokens, messages } = body
   const api_key = process.env.OPENAI_API_KEY
-if (!api_key) {
+  if (!api_key) {
     return NextResponse.json(
       {
         message:
