@@ -46,15 +46,21 @@ const Navbar = (props: NavBarProps) => {
           )}
           <p className='text-base font-semibold text-white'>{props.name}</p>
         </Link>
-        <Link
-          className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
-          href='/api/auth/signout'
+        <form
+          action='api/auth/signout'
+          method='post'
+          className='flex items-center'
         >
-          <ArrowRightCircleIcon className='h-8 w-8 text-white' />
-          <p className='text-base font-semibold text-white text-nowrap'>
-            Sign Out
-          </p>
-        </Link>
+          <button
+            className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
+            type='submit'
+          >
+            <ArrowRightCircleIcon className='h-8 w-8 text-white' />
+            <p className='text-base font-semibold text-white text-nowrap'>
+              Sign Out
+            </p>
+          </button>
+        </form>
       </div>
     </div>
   )

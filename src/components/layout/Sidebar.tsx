@@ -20,7 +20,7 @@ const items = [
     icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
   },
   {
-    name: 'Note',
+    name: 'Notes',
     href: '/product/summaries',
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
   },

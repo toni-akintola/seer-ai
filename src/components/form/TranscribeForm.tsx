@@ -8,6 +8,13 @@ import {
 } from '@/atoms/transcription-atoms'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { FileUploadInput } from '@/components/form/FileUploadInput'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/form/Select'
 
 type Props = {}
 
@@ -25,7 +32,7 @@ const TranscribeForm = (props: Props) => {
       }}
     >
       <div className='space-y-24'>
-        <div className='border-b border-gray-900/10 pb-12'>
+        <div className='border-b border-gray-900/10 pb-12 items-center'>
           <h2 className='text-xl font-bold leading-7 text-gray-900'>
             New Summary
           </h2>
@@ -59,7 +66,7 @@ const TranscribeForm = (props: Props) => {
               >
                 Audio/video file
               </label>
-              <div className='mt-2 flex justify-center rounded-lg border border-gray-900/10 px-6 py-10'>
+              <div className='mt-2 flex justify-center rounded-lg border border-gray-900/10 px-6 py-10 space-y-6'>
                 <div className='text-center'>
                   <PhotoIcon
                     className='mx-auto h-12 w-12 text-gray-300'
@@ -79,9 +86,29 @@ const TranscribeForm = (props: Props) => {
                   <p className='text-xs leading-5 text-gray-600'>
                     PNG, JPG, GIF, MP4, MOV, etc. up to 25MB
                   </p>
-                  <input name='response_format' defaultValue='vtt'></input>
+                  <label>
+                    Choose a response type{' '}
+                    <span className='text-xs text-neutral-500'>
+                      Choose VTT (recommended) or SRT
+                    </span>
+                  </label>
+                  <Select
+                    onValueChange={value => {
+                      setFileType(value as 'vtt' | 'srt')
+                    }}
+                    defaultValue='vtt'
+                    name='response_format'
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder='Choose a response type.' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value='vtt'>VTT</SelectItem>
+                      <SelectItem value='srt'>SRT</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <button
-                    className='bg-teal-400 rounded-md p-2 m-4 w-full text-white font-bold hover:bg-teal-500'
+                    className='bg-teal-400 rounded-md p-2 mt-4 w-full text-white font-bold hover:bg-teal-500'
                     type='submit'
                   >
                     {!handling ? (

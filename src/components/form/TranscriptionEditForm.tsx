@@ -5,6 +5,7 @@ import {
   fileTypeAtom,
   handlingAtom,
   languageAtom,
+  summaryAtom,
   tokenSizeMessageAtom,
   transcriptionAtom,
   translateHandlerAtom,
@@ -18,6 +19,7 @@ import {
   SelectValue,
 } from '@/components/form/Select'
 import { TextArea } from '@/components/form/TextArea'
+import { summarizeTranscript } from '@/app/api/summarize/generate-summary'
 
 type Props = {}
 
@@ -27,7 +29,9 @@ const TranscriptionEditForm = (props: Props) => {
   const fileName = useAtomValue(fileNameAtom)
   const setLanguage = useSetAtom(languageAtom)
   const [transcription, setTranscription] = useAtom(transcriptionAtom)
+  const [summary, setSummary] = useAtom(summaryAtom)
   const translateHandler = useSetAtom(translateHandlerAtom)
+
   const tokenSizeMessage = useAtomValue(tokenSizeMessageAtom)
 
   const downloadHandler = () => {
@@ -62,6 +66,15 @@ const TranscriptionEditForm = (props: Props) => {
           setTranscription(event.target.value)
         }}
       />
+      <TextArea
+        name='summary'
+        className='h-96'
+        value={summary}
+        onChange={event => {
+          setTranscription(event.target.value)
+        }}
+      />
+
       <div className='flex items-center gap-2'>
         <div
           className={

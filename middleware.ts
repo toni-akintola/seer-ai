@@ -1,12 +1,29 @@
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
+
 import type { NextRequest } from 'next/server'
-export { default } from 'next-auth/middleware'
-// This function can be marked `async` if using `await` inside
-export function middleware(request: NextRequest) {
-  return NextResponse.redirect(new URL('/home', request.url))
+
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next()
+  const supabase = createMiddlewareClient({ req, res })
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  // if user is signed in and the current path is / redirect the user to /account
+  if (user && req.nextUrl.pathname === '/') {
+    return NextResponse.redirect(new URL('/product', req.url))
+  }
+
+  // if user is not signed in and the current path is not / redirect the user to /
+  if (!user && req.nextUrl.pathname !== '/login') {
+    return NextResponse.redirect(new URL('/login', req.url))
+  }
+
+  return res
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/about/:path*',
+  matcher: ['/', '/product'],
 }

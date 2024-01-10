@@ -5,8 +5,8 @@ type Props = {}
 
 const GoogleButton = (props: Props) => {
   const handleClick = () => {
-    signIn("google")
-  };
+    signIn('google')
+  }
   return (
     <div className='flex w-full justify-center'>
       <button

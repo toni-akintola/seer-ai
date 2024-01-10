@@ -44,7 +44,7 @@ const Hero = (props: Props) => {
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
             <Link
-              href='/api/auth/signin'
+              href='/login'
               className='text-sm font-semibold leading-6 text-white'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
@@ -73,7 +73,7 @@ const Hero = (props: Props) => {
 
             <div className='mt-10 flex items-center justify-center gap-x-6'>
               <Link
-                href='/api/auth/signin'
+                href='/login'
                 className='rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-teal-400 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
               >
                 Get started

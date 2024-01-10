@@ -3,6 +3,7 @@ import tokenizer from 'gpt-tokenizer'
 import { atom } from 'jotai'
 
 import { ChatGPTMessage } from '../../types/openai'
+import { summarizeTranscript } from '@/app/api/summarize/generate-summary'
 
 tokenizer.modelName = 'gpt-3.5-turbo'
 
@@ -13,11 +14,13 @@ export const fileNameAtom = atom<string>('')
 export const fileTypeAtom = atom<'vtt' | 'srt'>('vtt')
 export const formDataAtom = atom<FormData | null>(null)
 export const transcriptionAtom = atom<string>('')
+export const summaryAtom = atom<string>('')
 export const handlingAtom = atom(false)
 export const formStateAtom = atom(get => {
   const transcription = get(transcriptionAtom)
   return !transcription ? 'transcribe' : 'translate'
 })
+
 export const transcriptionHandlerAtom = atom(
   null,
   async (_get, set, formData: FormData) => {
@@ -28,6 +31,8 @@ export const transcriptionHandlerAtom = atom(
         throw new Error('No data from response.')
       }
       set(transcriptionAtom, data.data)
+      const summaryResponse = await summarizeTranscript(data.data)
+      set(summaryAtom, summaryResponse)
       set(handlingAtom, false)
     } catch (error: any) {
       set(handlingAtom, false)
