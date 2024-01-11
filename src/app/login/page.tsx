@@ -12,7 +12,7 @@ export default function AuthUI() {
       <div className='flex p-20 items-center justify-center bg-white rounded-md'>
         <Auth
           supabaseClient={supabase}
-          providers={['google']}
+          providers={['github', 'google']}
           redirectTo={'http://localhost:3000/auth/callback'}
           magicLink={true}
           appearance={{

@@ -18,21 +18,20 @@ const Transaction = (props: Props) => {
   const [checkout, setCheckout] = useState(false)
   React.useEffect(() => {
     // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
+    const query = new URLSearchParams(window.location.search)
     if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
+      console.log('Order placed! You will receive an email confirmation.')
       setCheckout(true)
     }
 
     if (query.get('canceled')) {
-      console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
+      console.log(
+        'Order canceled -- continue to shop around and checkout when you’re ready.',
+      )
     }
-  }, []);
+  }, [])
 
-  return (
-    checkout ? (<div>Confirmed payment!</div>) : (
-  <Pricing />)
-  )
+  return checkout ? <div>Confirmed payment!</div> : <Pricing />
 }
 
 export default Transaction

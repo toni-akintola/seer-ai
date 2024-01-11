@@ -68,7 +68,7 @@ const Hero = (props: Props) => {
         <div className='sm:py-42 lg:pt-58 mx-auto max-w-2xl pt-64'>
           <div className='space-y-12 text-center'>
             <h1 className='text-4xl font-bold tracking-tight text-white sm:text-6xl'>
-              A GPT-powered personal assistant for students
+              A GPT-powered knowledge management system
             </h1>
 
             <div className='mt-10 flex items-center justify-center gap-x-6'>

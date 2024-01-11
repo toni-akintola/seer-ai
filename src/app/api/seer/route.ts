@@ -1,26 +1,25 @@
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import OpenAI from 'openai'
 
-
 import { nanoid } from '../../../../utils/helpers'
 import { getSession } from '@/app/server/supabase-server'
 
 export const runtime = 'edge'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 })
 
 export async function POST(req: Request) {
   const json = await req.json()
   const { messages, previewToken } = json
-  
+
   const session = await getSession()
   const userId = session?.user.id
 
   if (!userId) {
     return new Response('Unauthorized', {
-      status: 401
+      status: 401,
     })
   }
 
@@ -32,7 +31,7 @@ export async function POST(req: Request) {
     model: 'gpt-3.5-turbo',
     messages,
     temperature: 0.7,
-    stream: true
+    stream: true,
   })
 
   const stream = OpenAIStream(res, {
@@ -51,9 +50,11 @@ export async function POST(req: Request) {
           ...messages,
           {
             content: completion,
-            role: 'assistant'
-          }
-        ]
-      }}})
-      return new StreamingTextResponse(stream)
-    }
+            role: 'assistant',
+          },
+        ],
+      }
+    },
+  })
+  return new StreamingTextResponse(stream)
+}
