@@ -38,7 +38,7 @@ const Pricing = () => {
   //   }, [])
 
   return (
-    <div className='col-span-7 h-screen py-24 sm:py-32'>
+    <div className='col-span-5 h-screen py-24 sm:py-32'>
       <div className='mx-auto max-w-7xl rounded-md bg-white p-6 lg:p-16'>
         <div className='mx-auto max-w-2xl sm:text-center'>
           <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>

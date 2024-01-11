@@ -17,9 +17,7 @@ const Navbar = (props: NavBarProps) => {
     <div className='bg-teal-400 flex border border-gray-900/10 px-4 justify-between'>
       <Link className='flex h-1/2 flex-row items-center space-x-4' href='/'>
         <CpuChipIcon className='h-16 w-16 text-white' />
-        <h1 className='text-xl font-extrabold tracking-tight text-white'>
-          Seer
-        </h1>
+        
       </Link>
       <div className='flex flex-row justify-center space-x-3 rounded-md'>
         <Link
@@ -27,7 +25,7 @@ const Navbar = (props: NavBarProps) => {
           href='/'
         >
           <Cog6ToothIcon className='h-8 w-8 text-white' />
-          <p className='text-base font-semibold text-white'>Settings</p>
+
         </Link>
         <Link
           className='flex w-full flex-row items-center space-x-5 rounded-md p-2 hover:bg-teal-900 '

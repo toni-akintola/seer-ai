@@ -31,9 +31,8 @@ const Product = async (props: Props) => {
   return (
     <>
       {session ? (
-        <div className='col-span-6 grid h-screen grid-cols-6 border-gray-300 lg:col-span-7 justify-center'>
-          <div className='col-span-1'></div>
-          <div className='col-span-4 m-4 grid max-w-full justify-center rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-lg'>
+        <div className='col-span-5 grid h-screen grid-cols-5 border-gray-300 lg:col-span-7 justify-center'>
+          <div className='col-span-5 m-2 grid max-w-full justify-center rounded-lg border border-gray-200 bg-white px-6 py-4 shadow-lg'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
               Status Report
             </h2>
@@ -56,7 +55,7 @@ const Product = async (props: Props) => {
               ))}
             </dl>
           </div>
-          <div className='col-span-1'></div>
+
         </div>
       ) : (
         <Login />

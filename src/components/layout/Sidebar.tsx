@@ -50,10 +50,10 @@ const Sidebar: React.FunctionComponent = () => {
           <Link
             key={item.name}
             href={item.href}
-            className='flex w-full flex-row items-center space-x-5 rounded-md bg-teal-500 p-2 hover:bg-teal-900 '
+            className='flex w-full flex-row items-center space-x-5 rounded-md bg-inherit lg:bg-teal-500 py-4 lg:p-2 hover:bg-teal-900 '
           >
             {item.icon}
-            <p className='text-base font-extrabold text-white'>{item.name}</p>
+            {/* <p className='text-base font-extrabold text-white'>{item.name}</p> */}
           </Link>
         ))}
       </div>
