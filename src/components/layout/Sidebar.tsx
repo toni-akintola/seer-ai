@@ -7,6 +7,7 @@ import {
   CreditCardIcon,
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
 
 const items = [
   {
@@ -18,6 +19,11 @@ const items = [
     name: 'New Note',
     href: '/product/new-summary',
     icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
+  },
+  {
+    name: 'Your Seer',
+    href: '/product/seer',
+    icon: <ChatBubbleLeftEllipsisIcon className='h-8 w-8 text-white' />,
   },
   {
     name: 'Notes',

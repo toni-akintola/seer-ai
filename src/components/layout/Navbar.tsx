@@ -47,7 +47,7 @@ const Navbar = (props: NavBarProps) => {
           <p className='text-base font-semibold text-white'>{props.name}</p>
         </Link>
         <form
-          action='api/auth/signout'
+          action='/auth/signout'
           method='post'
           className='flex items-center'
         >

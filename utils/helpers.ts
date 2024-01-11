@@ -1,5 +1,5 @@
 import { Database } from '../types_db'
-
+import { customAlphabet } from 'nanoid'
 type Price = Database['public']['Tables']['prices']['Row']
 
 export const getURL = () => {
@@ -44,3 +44,8 @@ export const toDateTime = (secs: number) => {
   t.setSeconds(secs)
   return t
 }
+
+export const nanoid = customAlphabet(
+  '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+  7
+) // 7-character random string

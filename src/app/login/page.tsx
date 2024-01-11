@@ -8,25 +8,30 @@ import { ThemeSupa } from '@supabase/auth-ui-shared'
 export default function AuthUI() {
   const { supabase } = useSupabase()
   return (
-    <div className='flex flex-col space-y-4 h-screen'>
-      <Auth
-        supabaseClient={supabase}
-        providers={['google']}
-        redirectTo={'http://localhost:3000/api/auth/callback'}
-        magicLink={true}
-        appearance={{
-          theme: ThemeSupa,
-          variables: {
-            default: {
-              colors: {
-                brand: '#404040',
-                brandAccent: '#52525b',
+    <div className='flex flex-col space-y-4 h-screen items-center justify-center p-4'>
+      <div className='flex p-20 items-center justify-center bg-white rounded-md'>
+        <Auth
+          supabaseClient={supabase}
+          providers={['google']}
+          redirectTo={'http://localhost:3000/auth/callback'}
+          magicLink={true}
+          appearance={{
+            theme: ThemeSupa,
+            extend: true,
+            style: {
+              container: { width: '300px' },
+            },
+            variables: {
+              default: {
+                colors: {
+                  brand: '#0d9488',
+                  brandAccent: '#0d9488 ',
+                },
               },
             },
-          },
-        }}
-        theme='dark'
-      />
+          }}
+        />
+      </div>
     </div>
   )
 }

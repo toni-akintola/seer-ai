@@ -5,6 +5,7 @@ import RootLayout from '@/app/layout'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { Database } from '../../../types_db'
+import { getSession } from '@/app/server/supabase-server'
 
 export default async function Layout({
   children,
@@ -12,18 +13,16 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   const supabase = createServerComponentClient<Database>({ cookies })
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  const session = await getSession()
   return (
     <>
-      {user ? (
+      {session ? (
         <div>
           {' '}
-          <Navbar image={''} name={user?.email || ''} />
-          <div className='grid h-screen grid-cols-6 bg-gray-100 lg:grid-cols-8 overflow-scroll grid-rows-1'>
+          <Navbar image={''} name={session.user.email || ''} />
+          <div className='grid max-h-screen h-screen grid-cols-6 bg-gray-100 lg:grid-cols-8 overflow-y-auto grid-rows-1'>
             <Sidebar />
-            <div className='col-span-6 flex flex-col justify-between w-full h-screen border-gray-300 lg:col-span-7'>
+            <div className='col-span-6 flex flex-col justify-between w-full h-screen max-h-screen border-gray-300 lg:col-span-7 overflow-y-auto'>
               {children}
             </div>
           </div>{' '}
