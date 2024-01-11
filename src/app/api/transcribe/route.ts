@@ -13,9 +13,9 @@ export async function POST(request: Request) {
   language: string (optional)
   */
   formData.append('model', 'whisper-1')
-  const apiKEY = process.env.OPENAI_API_KEY
+  const apiKey = process.env.OPENAI_API_KEY
 
-  if (!apiKEY) {
+  if (!apiKey) {
     return NextResponse.json(
       {
         message:
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       formData,
       {
         headers: {
-          Authorization: `Bearer ${apiKEY}`,
+          Authorization: `Bearer ${apiKey}`,
         },
       },
     )

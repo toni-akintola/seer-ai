@@ -3,7 +3,6 @@ import tokenizer from 'gpt-tokenizer'
 import { atom } from 'jotai'
 
 import { ChatGPTMessage } from '../../types/openai'
-import { summarizeTranscript } from '@/app/api/summarize/generate-summary'
 
 tokenizer.modelName = 'gpt-3.5-turbo'
 
@@ -23,16 +22,64 @@ export const formStateAtom = atom(get => {
 
 export const transcriptionHandlerAtom = atom(
   null,
-  async (_get, set, formData: FormData) => {
+  async (get, set, formData: FormData) => {
     try {
       set(handlingAtom, true)
-      const { data } = await axios.post('/api/transcribe', formData)
+      let { data } = await axios.post('/api/transcribe', formData)
       if (!data) {
         throw new Error('No data from response.')
       }
       set(transcriptionAtom, data.data)
-      const summaryResponse = await summarizeTranscript(data.data)
-      set(summaryAtom, summaryResponse)
+      const transcription = get(transcriptionAtom)
+    const messages = [
+    {
+      role: 'system',
+      content:
+        'You are a knowledgeable expert in math, science, economics, and the humanities. Give the user insights they can use to further their learning.',
+    },
+    {
+      role: 'user',
+      content: `Summarize the following text and provide a bulleted list of the main learning points. Text: ${transcription}`
+    },
+  ]
+    const response = await fetch('/api/summarize', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        max_tokens: get(tokenSizeAtom).remainingTokenSize,
+        messages,
+        api_key: get(apiKeyAtom),
+      }),
+    })
+
+    if (!response.ok) {
+      console.log('Response not ok', response)
+      throw new Error(response.statusText)
+    }
+
+    // This data is a ReadableStream
+    data = response.body
+    if (!data) {
+      console.log('No data from response.', data)
+      throw new Error('No data from response.')
+    }
+    const reader = data.getReader()
+    const decoder = new TextDecoder()
+    let done = false
+
+    // Set transcription to empty
+    set(summaryAtom, '')
+
+    while (!done) {
+      console.log('Reading...')
+      const { value, done: doneReading } = await reader.read()
+      done = doneReading
+      const chunkValue = decoder.decode(value)
+      // summary
+      set(summaryAtom, prev => prev + chunkValue)
+    }
       set(handlingAtom, false)
     } catch (error: any) {
       set(handlingAtom, false)
@@ -41,6 +88,62 @@ export const transcriptionHandlerAtom = atom(
     }
   },
 )
+
+export const summaryHandlerAtom = atom(null, async (get, set, transcription: string) => {
+    try {
+    const messages = [
+    {
+      role: 'system',
+      content:
+        'You are a knowledgeable expert in math, science, economics, and the humanities. Give the user insights they can use to further their learning.',
+    },
+    {
+      role: 'user',
+      content: `Summarize the following text and provide a bulleted list of the main learning points. Text: ${transcription}`
+    },
+  ]
+    const response = await fetch('/api/summarize', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        max_tokens: get(tokenSizeAtom).remainingTokenSize,
+        messages,
+        api_key: get(apiKeyAtom),
+      }),
+    })
+
+    if (!response.ok) {
+      console.log('Response not ok', response)
+      throw new Error(response.statusText)
+    }
+
+    // This data is a ReadableStream
+    const data = response.body
+    if (!data) {
+      console.log('No data from response.', data)
+      throw new Error('No data from response.')
+    }
+    const reader = data.getReader()
+    const decoder = new TextDecoder()
+    let done = false
+
+    // Set transcription to empty
+    set(summaryAtom, '')
+
+    while (!done) {
+      console.log('Reading...')
+      const { value, done: doneReading } = await reader.read()
+      done = doneReading
+      const chunkValue = decoder.decode(value)
+      // summary
+      set(summaryAtom, prev => prev + chunkValue)
+    } } catch (error: any) {
+      console.log(error.response.data.message)
+      throw new Error(error.response.data.message)
+    } 
+})
 
 // Atoms for Translation
 export const languageAtom = atom<string>('spanish')

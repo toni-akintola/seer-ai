@@ -4,10 +4,10 @@ import {
   PencilSquareIcon,
   QuestionMarkCircleIcon,
   HomeIcon,
-  CreditCardIcon,
+  CreditCardIcon, WrenchIcon, ChatBubbleLeftEllipsisIcon
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-import { ChatBubbleLeftEllipsisIcon } from '@heroicons/react/24/outline'
+
 
 const items = [
   {
@@ -30,16 +30,23 @@ const items = [
     href: '/product/summaries',
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
   },
-  {
-    name: 'About',
-    href: '/',
-    icon: <QuestionMarkCircleIcon className='h-8 w-8 text-white' />,
-  },
+
   {
     name: 'Buy Credits',
     href: '/product/transaction',
     icon: <CreditCardIcon className='h-8 w-8 text-white' />,
   },
+   {
+    name: 'Tools',
+    href: '/product/tools',
+    icon: <WrenchIcon className='h-8 w-8 text-white' />
+  },
+    {
+    name: 'About',
+    href: '/',
+    icon: <QuestionMarkCircleIcon className='h-8 w-8 text-white' />,
+  },
+
 ]
 
 const Sidebar: React.FunctionComponent = () => {
@@ -50,10 +57,10 @@ const Sidebar: React.FunctionComponent = () => {
           <Link
             key={item.name}
             href={item.href}
-            className='flex w-full flex-row items-center space-x-5 rounded-md bg-inherit lg:bg-teal-500 py-4 lg:p-2 hover:bg-teal-900 '
+            className='flex w-full flex-row items-center justify-center lg:justify-normal space-x-5 rounded-md bg-inherit lg:bg-teal-500 py-4 lg:p-2 hover:bg-teal-900 '
           >
             {item.icon}
-            {/* <p className='text-base font-extrabold text-white'>{item.name}</p> */}
+            <p className='text-transparent lg:text-base font-extrabold lg:text-white'>{item.name}</p>
           </Link>
         ))}
       </div>

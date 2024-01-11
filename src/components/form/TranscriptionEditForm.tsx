@@ -6,6 +6,7 @@ import {
   handlingAtom,
   languageAtom,
   summaryAtom,
+  summaryHandlerAtom,
   tokenSizeMessageAtom,
   transcriptionAtom,
   translateHandlerAtom,
@@ -19,7 +20,6 @@ import {
   SelectValue,
 } from '@/components/form/Select'
 import { TextArea } from '@/components/form/TextArea'
-import { summarizeTranscript } from '@/app/api/summarize/generate-summary'
 
 type Props = {}
 
@@ -31,7 +31,6 @@ const TranscriptionEditForm = (props: Props) => {
   const [transcription, setTranscription] = useAtom(transcriptionAtom)
   const [summary, setSummary] = useAtom(summaryAtom)
   const translateHandler = useSetAtom(translateHandlerAtom)
-
   const tokenSizeMessage = useAtomValue(tokenSizeMessageAtom)
 
   const downloadHandler = () => {

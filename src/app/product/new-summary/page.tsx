@@ -1,4 +1,3 @@
-'use client'
 import Transcribe from '@/components/form/Transcribe'
 import React from 'react'
 
