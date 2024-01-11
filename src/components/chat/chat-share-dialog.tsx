@@ -16,7 +16,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle
+  DialogTitle,
 } from '@/components/ui/dialog'
 import { IconSpinner } from '@/components/ui/icons'
 import { useCopyToClipboard } from '../../../lib/hooks/use-copy-to-clipboard'
@@ -51,15 +51,15 @@ export function ChatShareDialog({
           borderRadius: '10px',
           background: '#333',
           color: '#fff',
-          fontSize: '14px'
+          fontSize: '14px',
         },
         iconTheme: {
           primary: 'white',
-          secondary: 'black'
-        }
+          secondary: 'black',
+        },
       })
     },
-    [copyToClipboard, onCopy]
+    [copyToClipboard, onCopy],
   )
 
   return (
@@ -71,13 +71,13 @@ export function ChatShareDialog({
             Anyone with the URL will be able to view the shared chat.
           </DialogDescription>
         </DialogHeader>
-        <div className="p-4 space-y-1 text-sm border rounded-md">
-          <div className="font-medium">{chat.title}</div>
-          <div className="text-muted-foreground">
+        <div className='p-4 space-y-1 text-sm border rounded-md'>
+          <div className='font-medium'>{chat.title}</div>
+          <div className='text-muted-foreground'>
             {chat.messages.length} messages
           </div>
         </div>
-        <DialogFooter className="items-center">
+        <DialogFooter className='items-center'>
           <Button
             disabled={isSharePending}
             onClick={() => {
@@ -96,7 +96,7 @@ export function ChatShareDialog({
           >
             {isSharePending ? (
               <>
-                <IconSpinner className="mr-2 animate-spin" />
+                <IconSpinner className='mr-2 animate-spin' />
                 Copying...
               </>
             ) : (

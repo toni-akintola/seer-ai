@@ -15,7 +15,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger
+  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { IconSpinner } from '@/components/ui/icons'
 
@@ -26,7 +26,7 @@ interface ClearHistoryProps {
 
 export function ClearHistory({
   isEnabled = false,
-  clearChats
+  clearChats,
 }: ClearHistoryProps) {
   const [open, setOpen] = React.useState(false)
   const [isPending, startTransition] = React.useTransition()
@@ -35,8 +35,8 @@ export function ClearHistory({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="ghost" disabled={!isEnabled || isPending}>
-          {isPending && <IconSpinner className="mr-2" />}
+        <Button variant='ghost' disabled={!isEnabled || isPending}>
+          {isPending && <IconSpinner className='mr-2' />}
           Clear history
         </Button>
       </AlertDialogTrigger>
@@ -67,7 +67,7 @@ export function ClearHistory({
               })
             }}
           >
-            {isPending && <IconSpinner className="mr-2 animate-spin" />}
+            {isPending && <IconSpinner className='mr-2 animate-spin' />}
             Delete
           </AlertDialogAction>
         </AlertDialogFooter>

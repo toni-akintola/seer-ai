@@ -9,7 +9,7 @@ export default function AuthUI() {
   const { supabase } = useSupabase()
   return (
     <div className='flex flex-col space-y-4 h-screen items-center justify-center p-4'>
-      <div className='flex p-20 items-center justify-center bg-white rounded-md'>
+      <div className='flex lg:p-20 p-8 items-center justify-center bg-white rounded-md'>
         <Auth
           supabaseClient={supabase}
           providers={['github', 'google']}

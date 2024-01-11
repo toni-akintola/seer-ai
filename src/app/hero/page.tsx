@@ -3,10 +3,10 @@ import { CpuChipIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { SparklesIcon } from '@heroicons/react/24/solid'
 
-const navigation = [
-  { name: 'Product', href: '/product' },
-  { name: 'Features', href: '#' },
-]
+// const navigation = [
+//   { name: 'Product', href: '/product' },
+//   { name: 'Features', href: '#' },
+// ]
 
 type Props = {}
 
@@ -30,19 +30,8 @@ const Hero = (props: Props) => {
             </Link>
           </div>
           <div className='flex lg:hidden'></div>
-          <div className='flex gap-x-7 lg:gap-x-24'>
-            {navigation.map(item => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className='flex flex-row items-center gap-x-3 text-base font-semibold leading-6 text-white'
-              >
-                {item.name}
-                <p>&rarr;</p>
-              </Link>
-            ))}
-          </div>
-          <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
+
+          <div className='lg:flex lg:flex-1 lg:justify-end'>
             <Link
               href='/login'
               className='text-sm font-semibold leading-6 text-white'

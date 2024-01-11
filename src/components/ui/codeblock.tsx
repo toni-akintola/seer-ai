@@ -40,7 +40,7 @@ export const programmingLanguages: languageMap = {
   shell: '.sh',
   sql: '.sql',
   html: '.html',
-  css: '.css'
+  css: '.css',
   // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
 }
 
@@ -63,7 +63,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
     const fileExtension = programmingLanguages[language] || '.file'
     const suggestedFileName = `file-${generateRandomString(
       3,
-      true
+      true,
     )}${fileExtension}`
     const fileName = window.prompt('Enter file name' || '', suggestedFileName)
 
@@ -90,49 +90,49 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
   }
 
   return (
-    <div className="relative w-full font-sans codeblock bg-zinc-950">
-      <div className="flex items-center justify-between w-full px-6 py-2 pr-4 bg-zinc-800 text-zinc-100">
-        <span className="text-xs lowercase">{language}</span>
-        <div className="flex items-center space-x-1">
+    <div className='relative w-full font-sans codeblock bg-zinc-950'>
+      <div className='flex items-center justify-between w-full px-6 py-2 pr-4 bg-zinc-800 text-zinc-100'>
+        <span className='text-xs lowercase'>{language}</span>
+        <div className='flex items-center space-x-1'>
           <Button
-            variant="ghost"
-            className="hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
+            variant='ghost'
+            className='hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0'
             onClick={downloadAsFile}
-            size="icon"
+            size='icon'
           >
             <IconDownload />
-            <span className="sr-only">Download</span>
+            <span className='sr-only'>Download</span>
           </Button>
           <Button
-            variant="ghost"
-            size="icon"
-            className="text-xs hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
+            variant='ghost'
+            size='icon'
+            className='text-xs hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0'
             onClick={onCopy}
           >
             {isCopied ? <IconCheck /> : <IconCopy />}
-            <span className="sr-only">Copy code</span>
+            <span className='sr-only'>Copy code</span>
           </Button>
         </div>
       </div>
       <SyntaxHighlighter
         language={language}
         style={coldarkDark}
-        PreTag="div"
+        PreTag='div'
         showLineNumbers
         customStyle={{
           margin: 0,
           width: '100%',
           background: 'transparent',
-          padding: '1.5rem 1rem'
+          padding: '1.5rem 1rem',
         }}
         lineNumberStyle={{
-          userSelect: "none",
+          userSelect: 'none',
         }}
         codeTagProps={{
           style: {
             fontSize: '0.9rem',
-            fontFamily: 'var(--font-mono)'
-          }
+            fontFamily: 'var(--font-mono)',
+          },
         }}
       >
         {value}

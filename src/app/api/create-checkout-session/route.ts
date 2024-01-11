@@ -63,8 +63,8 @@ export async function POST(req: Request) {
         ],
         mode: 'payment',
         allow_promotion_codes: true,
-        success_url: `${getURL()}/product`,
-        cancel_url: `${getURL()}/`,
+        success_url: `${getURL()}/product?success=true`,
+        cancel_url: `${getURL()}/?canceled=true`,
       })
 
       if (session) {
