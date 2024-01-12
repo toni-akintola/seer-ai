@@ -2,9 +2,11 @@
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "deno.enablePaths": ["supabase/functions"],
+  "deno.enable": true,
+  "deno.enablePaths": ["supabase"],
   "deno.lint": true,
-  "deno.unstable": true,
+  "deno.unstable": false,
   "editor.formatOnSave": true,
-  "files.autoSave": "onFocusChange"
+  "files.autoSave": "onFocusChange",
+  "deno.importMap": "./supabase/functions/import_map.json"
 }

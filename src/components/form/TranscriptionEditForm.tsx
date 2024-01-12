@@ -6,11 +6,10 @@ import {
   handlingAtom,
   languageAtom,
   summaryAtom,
-  summaryHandlerAtom,
   tokenSizeMessageAtom,
   transcriptionAtom,
   translateHandlerAtom,
-} from '@/atoms/transcription-atoms'
+} from '../../atoms/transcription-atoms'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 import {
   Select,
@@ -18,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/form/Select'
-import { TextArea } from '@/components/form/TextArea'
+} from './Select'
+import { TextArea } from './TextArea'
 
 type Props = {}
 

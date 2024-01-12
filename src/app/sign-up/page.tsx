@@ -1,5 +1,5 @@
-import GoogleButton from '@/components/misc/GoogleButton'
-import MSButton from '@/components/misc/MSButton'
+import GoogleButton from '../../components/misc/GoogleButton'
+import MSButton from '../../components/misc/MSButton'
 import Link from 'next/link'
 import React from 'react'
 

@@ -6,6 +6,7 @@ import {
 
 import React from 'react'
 import Link from 'next/link'
+import { ApertureIcon } from 'lucide-react'
 
 export interface NavBarProps {
   image?: string
@@ -16,7 +17,8 @@ const Navbar = (props: NavBarProps) => {
   return (
     <div className='bg-teal-400 flex border border-gray-900/10 px-4 justify-between'>
       <Link className='flex h-1/2 flex-row items-center space-x-4' href='/'>
-        <CpuChipIcon className='h-16 w-16 text-white' />
+        <ApertureIcon className='h-16 w-16 text-white' />
+        <p className='text-lg text-white font-extrabold tracking-tight'>Seer</p>
       </Link>
       <div className='flex flex-row justify-center space-x-3 rounded-md items-center'>
         <p className='text-base text-nowrap font-semibold text-white'>

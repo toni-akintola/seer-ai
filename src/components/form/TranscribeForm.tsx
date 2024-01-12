@@ -6,16 +6,16 @@ import {
   handlingAtom,
   transcriptionAtom,
   transcriptionHandlerAtom,
-} from '@/atoms/transcription-atoms'
+} from '../../atoms/transcription-atoms'
 import { useAtomValue, useSetAtom } from 'jotai'
-import { FileUploadInput } from '@/components/form/FileUploadInput'
+import { FileUploadInput } from './FileUploadInput'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/form/Select'
+} from './Select'
 
 type Props = {}
 

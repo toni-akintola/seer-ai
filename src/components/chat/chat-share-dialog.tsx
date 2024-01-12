@@ -8,8 +8,8 @@ import { toast } from 'react-hot-toast'
 import { ServerActionResult } from '../../../types/misc'
 import type { Chat } from '../../../types/misc'
 import { cn } from '../../../utils/helpers'
-import { badgeVariants } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { badgeVariants } from '../ui/badge'
+import { Button } from '../ui/button'
 import {
   Dialog,
   DialogContent,
@@ -17,8 +17,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog'
-import { IconSpinner } from '@/components/ui/icons'
+} from '../ui/dialog'
+import { IconSpinner } from '../ui/icons'
 import { useCopyToClipboard } from '../../../lib/hooks/use-copy-to-clipboard'
 
 interface ChatShareDialogProps extends DialogProps {

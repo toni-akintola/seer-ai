@@ -1,7 +1,7 @@
-import Navbar from '@/components/layout/Navbar'
-import Sidebar from '@/components/layout/Sidebar'
-import RootLayout from '@/app/layout'
-import { getSession } from '@/app/server/supabase-server'
+import Navbar from '../../components/layout/Navbar'
+import Sidebar from '../../components/layout/Sidebar'
+import RootLayout from '../layout'
+import { getSession } from '../server/supabase-server'
 
 export default async function Layout({
   children,

@@ -2,7 +2,7 @@ import { OpenAIStream, StreamingTextResponse } from 'ai'
 import OpenAI from 'openai'
 
 import { nanoid } from '../../../../utils/helpers'
-import { getSession } from '@/app/server/supabase-server'
+import { getSession } from '../../server/supabase-server'
 
 export const runtime = 'edge'
 

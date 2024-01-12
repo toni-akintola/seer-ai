@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { type UseChatHelpers } from 'ai/react'
 
-import { Button } from '@/components/ui/button'
-import { PromptForm } from '@/components/chat/prompt-form'
-import { ButtonScrollToBottom } from '@/components/chat/button-scroll-to-bottom'
-import { IconRefresh, IconShare, IconStop } from '@/components/ui/icons'
+import { Button } from '../ui/button'
+import { PromptForm } from './prompt-form'
+import { ButtonScrollToBottom } from './button-scroll-to-bottom'
+import { IconRefresh, IconShare, IconStop } from '../ui/icons'
 // import { FooterText } from '@/components/footer'
-import { ChatShareDialog } from '@/components/chat/chat-share-dialog'
+import { ChatShareDialog } from './chat-share-dialog'
 
 export interface ChatPanelProps
   extends Pick<

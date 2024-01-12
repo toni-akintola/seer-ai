@@ -4,7 +4,7 @@ import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 
 import { cn } from '../../../utils/helpers'
-import { IconClose } from '@/components/ui/icons'
+import { IconClose } from './icons'
 
 const Dialog = DialogPrimitive.Root
 

@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 import { cn } from '../../../utils/helpers'
 // import { SidebarList } from '@/components/sidebar-list'
-import { buttonVariants } from '@/components/ui/button'
-import { IconPlus } from '@/components/ui/icons'
+import { buttonVariants } from '../ui/button'
+import { IconPlus } from '../ui/icons'
 
 interface ChatHistoryProps {
   userId?: string

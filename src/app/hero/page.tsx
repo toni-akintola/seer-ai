@@ -2,7 +2,8 @@ import React from 'react'
 import { CpuChipIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { SparklesIcon } from '@heroicons/react/24/solid'
-import { getSession } from '@/app/server/supabase-server'
+import { getSession } from '../server/supabase-server'
+import { ApertureIcon } from 'lucide-react'
 
 type Props = {}
 
@@ -20,7 +21,7 @@ const Hero = async (props: Props) => {
               href='#'
               className='-m-1.5 p-1.5 flex-row items-center flex space-x-3'
             >
-              <SparklesIcon className='h-12 w-12 text-white' />
+              <ApertureIcon className='h-12 w-12 text-white' />
               <h1 className='text-xl font-extrabold tracking-tight text-white'>
                 Seer
               </h1>
@@ -88,7 +89,7 @@ const Hero = async (props: Props) => {
             </div>
             <div className='hidden sm:mb-8 sm:flex sm:justify-center'>
               <div className='relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-900/10 hover:ring-gray-900/20'>
-                Announcing our first round of funding.{' '}
+                By creating an account, you agree to our terms of service.{' '}
                 <a href='#' className='font-bold text-white'>
                   <span className='absolute inset-0' aria-hidden='true' />
                   Read more <span aria-hidden='true'>&rarr;</span>

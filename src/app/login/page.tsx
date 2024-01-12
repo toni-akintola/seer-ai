@@ -1,6 +1,6 @@
 'use client'
 
-import { useSupabase } from '@/app/client/supabase-provider'
+import { useSupabase } from '../client/supabase-provider'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 

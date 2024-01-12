@@ -4,11 +4,7 @@ import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 
 import { cn } from '../../../utils/helpers'
-import {
-  IconArrowDown,
-  IconCheck,
-  IconChevronUpDown,
-} from '@/components/ui/icons'
+import { IconArrowDown, IconCheck, IconChevronUpDown } from './icons'
 
 const Select = SelectPrimitive.Root
 

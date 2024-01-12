@@ -1,4 +1,4 @@
-import Transcribe from '@/components/form/Transcribe'
+import Transcribe from '../../../components/form/Transcribe'
 import React from 'react'
 
 export interface Props {}

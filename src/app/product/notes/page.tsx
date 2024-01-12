@@ -1,9 +1,10 @@
+import ListNotes from '../../../components/notes/ListNotes'
 import React from 'react'
 
 export interface Props {}
 
 const Summaries = (props: Props) => {
-  return <div>Summaries</div>
+  return <ListNotes />
 }
 
 export default Summaries

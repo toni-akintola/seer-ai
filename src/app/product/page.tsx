@@ -1,10 +1,9 @@
-import Login from '@/app/login/page'
-import GPTInput from '@/components/form/GPTInput'
+import Login from '../login/page'
 import React from 'react'
 import { Database } from '../../../types_db'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { getSession } from '@/app/server/supabase-server'
+import { getSession } from '../server/supabase-server'
 
 type Props = {}
 

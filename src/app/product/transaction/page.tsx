@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Pricing from '@/components/pricing/Pricing'
-import { getSession } from '@/app/server/supabase-server'
+import Pricing from '../../../components/pricing/Pricing'
+import { getSession } from '../../server/supabase-server'
 
 const includedFeatures = [
   'Private forum access',
