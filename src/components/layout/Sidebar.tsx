@@ -4,10 +4,11 @@ import {
   PencilSquareIcon,
   QuestionMarkCircleIcon,
   HomeIcon,
-  CreditCardIcon, WrenchIcon, ChatBubbleLeftEllipsisIcon
+  CreditCardIcon,
+  WrenchIcon,
+  ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
-
 
 const items = [
   {
@@ -20,15 +21,16 @@ const items = [
     href: '/product/new-summary',
     icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
   },
-  {
-    name: 'Your Seer',
-    href: '/product/seer',
-    icon: <ChatBubbleLeftEllipsisIcon className='h-8 w-8 text-white' />,
-  },
+
   {
     name: 'Notes',
     href: '/product/summaries',
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
+  },
+  {
+    name: 'Talk to Seer',
+    href: '/product/seer',
+    icon: <ChatBubbleLeftEllipsisIcon className='h-8 w-8 text-white' />,
   },
 
   {
@@ -36,17 +38,16 @@ const items = [
     href: '/product/transaction',
     icon: <CreditCardIcon className='h-8 w-8 text-white' />,
   },
-   {
+  {
     name: 'Tools',
     href: '/product/tools',
-    icon: <WrenchIcon className='h-8 w-8 text-white' />
+    icon: <WrenchIcon className='h-8 w-8 text-white' />,
   },
-    {
+  {
     name: 'About',
     href: '/',
     icon: <QuestionMarkCircleIcon className='h-8 w-8 text-white' />,
   },
-
 ]
 
 const Sidebar: React.FunctionComponent = () => {
@@ -60,7 +61,9 @@ const Sidebar: React.FunctionComponent = () => {
             className='flex w-full flex-row items-center justify-center lg:justify-normal space-x-5 rounded-md bg-inherit lg:bg-teal-500 py-4 lg:p-2 hover:bg-teal-900 '
           >
             {item.icon}
-            <p className='text-transparent lg:text-base font-extrabold lg:text-white'>{item.name}</p>
+            <p className='text-transparent lg:text-base font-extrabold lg:text-white'>
+              {item.name}
+            </p>
           </Link>
         ))}
       </div>

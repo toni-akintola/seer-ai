@@ -1,15 +1,14 @@
 import axios, { AxiosError } from 'axios'
-import { OpenAIStream } from '../../../../lib/openai';
+import { OpenAIStream } from '../../../../lib/openai'
 
-export async function POST (request: Request) {
-
+export async function POST(request: Request) {
   const body = await request.json()
   const { max_tokens, messages } = body
 
   const api_key = process.env.OPENAI_API_KEY as string
-  
+
   try {
-      const stream = await OpenAIStream({
+    const stream = await OpenAIStream({
       model: 'gpt-3.5-turbo',
       messages,
       max_tokens,

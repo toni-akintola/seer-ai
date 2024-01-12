@@ -1,5 +1,5 @@
+'use client'
 import React, { useState } from 'react'
-
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import { Session, User } from '@supabase/supabase-js'
@@ -7,6 +7,7 @@ import { getStripe } from '../../../utils/stripe-client'
 import { postData } from '../../../utils/helpers'
 import { useRouter } from 'next/navigation'
 import { Database } from '../../../types_db'
+import axios from 'axios'
 
 const includedFeatures = [
   'Private forum access',
@@ -22,20 +23,23 @@ interface Props {
 
 type Price = Database['public']['Tables']['prices']['Row']
 
-const Pricing = () => {
-  //   React.useEffect(() => {
-  //     // Check to see if this is a redirect back from Checkout
-  //     const query = new URLSearchParams(window.location.search)
-  //     if (query.get('success')) {
-  //       console.log('Order placed! You will receive an email confirmation.')
-  //     }
+const Pricing = ({ session, user }: Props) => {
+  const router = useRouter()
+  const [price, setPrice] = useState('price_1OXEI5GV4YWCijWAbiSOnGRw')
+  const handleCheckout = async () => {
+    if (!user) {
+      return router.push('/')
+    }
 
-  //     if (query.get('canceled')) {
-  //       console.log(
-  //         'Order canceled -- continue to shop around and checkout when you’re ready.',
-  //       )
-  //     }
-  //   }, [])
+    try {
+      const { data } = await axios.post('/api/create-checkout-session', price)
+      const sessionId = data
+      const stripe = await getStripe()
+      stripe?.redirectToCheckout({sessionId})
+    } catch (error) {
+      return alert((error as Error)?.message)
+    }
+  }
 
   return (
     <div className='col-span-5 h-screen py-24 sm:py-32'>
@@ -82,7 +86,7 @@ const Pricing = () => {
           </div>
           <div className='-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0'>
             <div className='rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16'>
-              <form action='/api/create-checkout-session' method='POST'>
+              <form>
                 <div className='mx-auto max-w-xs px-8'>
                   <p className='text-base font-semibold text-gray-900'>
                     Pay once, own it forever
@@ -98,7 +102,8 @@ const Pricing = () => {
                   <button
                     className='mt-10 block w-full rounded-md bg-teal-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                     role='link'
-                    type='submit'
+                    type='button'
+                    onClick={() => (handleCheckout())}
                   >
                     Get access
                   </button>

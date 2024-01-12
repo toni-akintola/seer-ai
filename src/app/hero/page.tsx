@@ -2,15 +2,13 @@ import React from 'react'
 import { CpuChipIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { SparklesIcon } from '@heroicons/react/24/solid'
+import { getSession } from '@/app/server/supabase-server'
 
-// const navigation = [
-//   { name: 'Product', href: '/product' },
-//   { name: 'Features', href: '#' },
-// ]
 
 type Props = {}
 
-const Hero = (props: Props) => {
+const Hero = async (props: Props) => {
+  const session = await getSession()
   return (
     <div className='flex h-screen justify-center bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200'>
       <header className='absolute inset-x-0 top-0 z-50'>
@@ -32,12 +30,25 @@ const Hero = (props: Props) => {
           <div className='flex lg:hidden'></div>
 
           <div className='lg:flex lg:flex-1 lg:justify-end'>
-            <Link
+            {session ? (
+              <form
+          action='/auth/signout'
+          method='post'
+          className='flex items-center'
+        >
+          <button
+            className='text-sm font-semibold leading-6 text-white'
+            type='submit'
+          >
+            Sign out <span aria-hidden='true'>&rarr;</span>
+          </button>
+        </form>
+            ) : (<Link
               href='/login'
               className='text-sm font-semibold leading-6 text-white'
             >
               Log in <span aria-hidden='true'>&rarr;</span>
-            </Link>
+            </Link>)}
           </div>
         </nav>
       </header>

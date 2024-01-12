@@ -4,7 +4,6 @@ import {
   fileNameAtom,
   fileTypeAtom,
   handlingAtom,
-  summaryHandlerAtom,
   transcriptionAtom,
   transcriptionHandlerAtom,
 } from '@/atoms/transcription-atoms'
@@ -23,8 +22,7 @@ type Props = {}
 const TranscribeForm = (props: Props) => {
   const handling = useAtomValue(handlingAtom)
   const submitHandler = useSetAtom(transcriptionHandlerAtom)
-  const summaryHandler = useSetAtom(summaryHandlerAtom)
-  const transcription= useAtomValue(transcriptionAtom)
+  const transcription = useAtomValue(transcriptionAtom)
   const setFileName = useSetAtom(fileNameAtom)
   const setFileType = useSetAtom(fileTypeAtom)
   return (
@@ -33,7 +31,6 @@ const TranscribeForm = (props: Props) => {
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         submitHandler(formData)
-        summaryHandler(transcription)
       }}
     >
       <div className='space-y-24'>
@@ -91,27 +88,27 @@ const TranscribeForm = (props: Props) => {
                   <p className='text-xs leading-5 text-gray-600'>
                     PNG, JPG, GIF, MP4, MOV, etc. up to 25MB
                   </p>
-                    <label>
-                      Choose a response type{' '}
-                      <span className='text-xs text-neutral-500'>
-                        Choose VTT (recommended) or SRT
-                      </span>
-                    </label>
-                    <Select
-                      onValueChange={value => {
-                        setFileType(value as 'vtt' | 'srt')
-                      }}
-                      defaultValue='vtt'
-                      name='response_format'
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder='Choose a response type.' />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value='vtt'>VTT</SelectItem>
-                        <SelectItem value='srt'>SRT</SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <label>
+                    Choose a response type{' '}
+                    <span className='text-xs text-neutral-500'>
+                      Choose VTT (recommended) or SRT
+                    </span>
+                  </label>
+                  <Select
+                    onValueChange={value => {
+                      setFileType(value as 'vtt' | 'srt')
+                    }}
+                    defaultValue='vtt'
+                    name='response_format'
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder='Choose a response type.' />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value='vtt'>VTT</SelectItem>
+                      <SelectItem value='srt'>SRT</SelectItem>
+                    </SelectContent>
+                  </Select>
                   <button
                     className='bg-teal-400 rounded-md p-2 mt-4 w-full text-white font-bold hover:bg-teal-500'
                     type='submit'

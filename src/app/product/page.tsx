@@ -55,7 +55,6 @@ const Product = async (props: Props) => {
               ))}
             </dl>
           </div>
-
         </div>
       ) : (
         <Login />
