@@ -9,6 +9,7 @@ import {
   ChatBubbleLeftEllipsisIcon,
 } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import { UploadCloudIcon } from 'lucide-react'
 
 const items = [
   {
@@ -16,6 +17,13 @@ const items = [
     href: '/product',
     icon: <HomeIcon className='h-8 w-8 text-white' />,
   },
+
+  {
+    name: 'Transcribe',
+    href: '/product/new-summary',
+    icon: <UploadCloudIcon className='h-8 w-8 text-white' />,
+  },
+
   {
     name: 'New Note',
     href: '/product/new-summary',

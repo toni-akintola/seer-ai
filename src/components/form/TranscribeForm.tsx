@@ -36,11 +36,11 @@ const TranscribeForm = (props: Props) => {
       <div className='space-y-24'>
         <div className='border-b border-gray-900/10 pb-12 items-center'>
           <h2 className='text-xl font-bold leading-7 text-gray-900'>
-            New Summary
+            New Transcription & Summary
           </h2>
           <p className='mt-1 text-sm leading-6 text-gray-600'>
-            This information will be displayed publicly so be careful what you
-            share.
+            Seer can transcribe, translate, and summarize the contents of any
+            audio file of your choosing (up to 25 MB)
           </p>
 
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
