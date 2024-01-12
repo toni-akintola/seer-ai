@@ -7,7 +7,6 @@ import { Database } from '../../../../types_db'
 import { NextResponse } from 'next/server'
 
 export async function POST(req: Request) {
-  
   const session = await stripe.checkout.sessions.create({
     success_url: 'http://localhost:3000/product/transaction',
     cancel_url: 'http://localhost:3000/product/transaction',

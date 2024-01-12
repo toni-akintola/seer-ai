@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { SparklesIcon } from '@heroicons/react/24/solid'
 import { getSession } from '@/app/server/supabase-server'
 
-
 type Props = {}
 
 const Hero = async (props: Props) => {
@@ -32,23 +31,25 @@ const Hero = async (props: Props) => {
           <div className='lg:flex lg:flex-1 lg:justify-end'>
             {session ? (
               <form
-          action='/auth/signout'
-          method='post'
-          className='flex items-center'
-        >
-          <button
-            className='text-sm font-semibold leading-6 text-white'
-            type='submit'
-          >
-            Sign out <span aria-hidden='true'>&rarr;</span>
-          </button>
-        </form>
-            ) : (<Link
-              href='/login'
-              className='text-sm font-semibold leading-6 text-white'
-            >
-              Log in <span aria-hidden='true'>&rarr;</span>
-            </Link>)}
+                action='/auth/signout'
+                method='post'
+                className='flex items-center'
+              >
+                <button
+                  className='text-sm font-semibold leading-6 text-white'
+                  type='submit'
+                >
+                  Sign out <span aria-hidden='true'>&rarr;</span>
+                </button>
+              </form>
+            ) : (
+              <Link
+                href='/login'
+                className='text-sm font-semibold leading-6 text-white'
+              >
+                Log in <span aria-hidden='true'>&rarr;</span>
+              </Link>
+            )}
           </div>
         </nav>
       </header>

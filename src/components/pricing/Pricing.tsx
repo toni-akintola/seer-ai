@@ -35,7 +35,7 @@ const Pricing = ({ session, user }: Props) => {
       const { data } = await axios.post('/api/create-checkout-session', price)
       const sessionId = data
       const stripe = await getStripe()
-      stripe?.redirectToCheckout({sessionId})
+      stripe?.redirectToCheckout({ sessionId })
     } catch (error) {
       return alert((error as Error)?.message)
     }
@@ -103,7 +103,7 @@ const Pricing = ({ session, user }: Props) => {
                     className='mt-10 block w-full rounded-md bg-teal-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                     role='link'
                     type='button'
-                    onClick={() => (handleCheckout())}
+                    onClick={() => handleCheckout()}
                   >
                     Get access
                   </button>
