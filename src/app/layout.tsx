@@ -27,8 +27,10 @@ export default function RootLayout({
         className={`${SCP.className} bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200`}
       >
         <SupabaseProvider>
-          {children}
-          <Analytics />
+          <Providers>
+            {children}
+            <Analytics />
+          </Providers>
         </SupabaseProvider>
       </body>
     </html>
