@@ -1,5 +1,31 @@
+-- General purpose trigger function to generate text embeddings
+-- on newly inserted rows.
+--
+-- Calls an edge function at `/embed` in batches that asynchronously
+-- generates the embeddings and stores them on each record.
+-- 
+-- Trigger is expected to have the format:
+--
+-- create trigger <trigger_name>
+-- after insert on <table_name>
+-- referencing new table as inserted
+-- for each statement
+-- execute procedure private.embed(<content_column>, <embedding_column>);
+--
+-- Expects 2 arguments: `private.embed(<content_column>, <embedding_column>)`
+-- where the first argument indicates the source column containing the text content,
+-- and the second argument indicates the destination column to store the embedding.
+--
+-- Also supports 2 more optional arguments: `private.embed(<content_column>, <embedding_column>, <batch_size>, <timeout_milliseconds>)`
+-- where the third argument indicates the number of records to include in each edge function call (default 5),
+-- and the fourth argument specifies the HTTP connection timeout for each edge function call (default 300000 ms).
+
+
+
+
 create function private.embed()
 returns trigger
+security definer
 language plpgsql
 as $$
 declare

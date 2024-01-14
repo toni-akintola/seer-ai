@@ -1,20 +1,20 @@
-import { createClient } from '@supabase/supabase-js'
-import { env, pipeline } from '@xenova/transformers'
+// @ts-ignore: temp
 
-// Configuration for Deno runtime
-env.useBrowserCache = false
-env.allowLocalModels = false
+import { createClient } from '@supabase/supabase-js';
+// deno-lint-ignore no-unused-vars
+import { env, pipeline } from '@xenova/transformers';
+import { corsHeaders } from '../_shared/cors.ts';
+
 
 const generateEmbedding = await pipeline(
   'feature-extraction',
-  'Supabase/gte-small',
-)
+  'Supabase/gte-small'
+);
 
-// These are automatically injected
-const supabaseUrl = Deno.env.get('SUPABASE_URL')
-const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')
+const supabaseUrl = Deno.env.get('SUPABASE_URL');
+const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY');
 
-Deno.serve(async req => {
+Deno.serve(async (req) => {
   if (!supabaseUrl || !supabaseAnonKey) {
     return new Response(
       JSON.stringify({
@@ -23,19 +23,20 @@ Deno.serve(async req => {
       {
         status: 500,
         headers: { 'Content-Type': 'application/json' },
-      },
-    )
+      }
+    );
   }
-  const authorization = req.headers.get('Authorization')
+
+  const authorization = req.headers.get('Authorization');
 
   if (!authorization) {
     return new Response(
       JSON.stringify({ error: `No authorization header passed` }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      },
-    )
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
   }
 
   const supabase = createClient(supabaseUrl, supabaseAnonKey, {
@@ -47,49 +48,49 @@ Deno.serve(async req => {
     auth: {
       persistSession: false,
     },
-  })
+  });
 
-  const { ids, table, contentColumn, embeddingColumn } = await req.json()
+  const { ids, table, contentColumn, embeddingColumn } = await req.json();
 
   const { data: rows, error: selectError } = await supabase
     .from(table)
     .select(`id, ${contentColumn}` as '*')
     .in('id', ids)
-    .is(embeddingColumn, null)
+    .is(embeddingColumn, null);
 
   if (selectError) {
     return new Response(JSON.stringify({ error: selectError }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
-    })
+    });
   }
 
   for (const row of rows) {
-    const { id, [contentColumn]: content } = row
+    const { id, [contentColumn]: content } = row;
 
     if (!content) {
-      console.error(`No content available in column '${contentColumn}'`)
-      continue
+      console.error(`No content available in column '${contentColumn}'`);
+      continue;
     }
 
     const output = await generateEmbedding(content, {
       pooling: 'mean',
       normalize: true,
-    })
+    });
 
-    const embedding = JSON.stringify(Array.from(output.data))
+    const embedding = JSON.stringify(Array.from(output.data));
 
     const { error } = await supabase
       .from(table)
       .update({
         [embeddingColumn]: embedding,
       })
-      .eq('id', id)
+      .eq('id', id);
 
     if (error) {
       console.error(
-        `Failed to save embedding on '${table}' table with id ${id}`,
-      )
+        `Failed to save embedding on '${table}' table with id ${id}`
+      );
     }
 
     console.log(
@@ -98,12 +99,12 @@ Deno.serve(async req => {
         id,
         contentColumn,
         embeddingColumn,
-      })}`,
-    )
+      })}`
+    );
   }
 
   return new Response(null, {
     status: 204,
     headers: { 'Content-Type': 'application/json' },
-  })
-})
+  });
+});

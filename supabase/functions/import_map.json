@@ -1,6 +1,6 @@
 {
   "imports": {
-    "@std/": "https://deno.land/std@0.168.0/",
+    "@std/": "https://deno.land/std@0.212.0/",
 
     "@xenova/transformers": "https://cdn.jsdelivr.net/npm/@xenova/transformers@2.6.1",
     "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2.21.0",
@@ -14,6 +14,6 @@
     "unist-builder": "https://esm.sh/unist-builder@4.0.0",
     "mdast": "https://esm.sh/v132/@types/mdast@4.0.0/index.d.ts",
 
-    "https://esm.sh/v132/decode-named-character-reference@1.0.2/esnext/decode-named-character-reference.mjs": "https://esm.sh/decode-named-character-reference@1.0.2?target=deno"
+    "https://esm.sh/v135/decode-named-character-reference@1.0.2/esnext/decode-named-character-reference.mjs": "https://esm.sh/decode-named-character-reference@1.0.2?target=deno"
   }
 }
