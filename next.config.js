@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-      webpack: (config) => {
+  webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,
       sharp$: false,
       'onnxruntime-node$': false,
-    };
-    return config;
+    }
+    return config
   },
 }
 

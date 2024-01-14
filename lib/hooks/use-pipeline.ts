@@ -1,14 +1,10 @@
-import { Pipeline, PretrainedOptions, Tensor } from '@xenova/transformers';
-import { useEffect, useState } from 'react';
-import {
-  InitEventData,
-  OutgoingEventData,
-  RunEventData,
-} from '../pipeline';
+import { Pipeline, PretrainedOptions, Tensor } from '@xenova/transformers'
+import { useEffect, useState } from 'react'
+import { InitEventData, OutgoingEventData, RunEventData } from '../pipeline'
 
-export type PipeParameters = Parameters<Pipeline['_call']>;
-export type PipeReturnType = Awaited<ReturnType<Pipeline['_call']>>;
-export type PipeFunction = (...args: PipeParameters) => Promise<PipeReturnType>;
+export type PipeParameters = Parameters<Pipeline['_call']>
+export type PipeReturnType = Awaited<ReturnType<Pipeline['_call']>>
+export type PipeFunction = (...args: PipeParameters) => Promise<PipeReturnType>
 
 /**
  * Hook to build a Transformers.js pipeline function.
@@ -23,105 +19,102 @@ export type PipeFunction = (...args: PipeParameters) => Promise<PipeReturnType>;
 export function usePipeline(
   task: string,
   model?: string,
-  options?: PretrainedOptions
+  options?: PretrainedOptions,
 ) {
-  const [worker, setWorker] = useState<Worker>();
-  const [pipe, setPipe] = useState<PipeFunction>();
+  const [worker, setWorker] = useState<Worker>()
+  const [pipe, setPipe] = useState<PipeFunction>()
 
   // Using `useEffect` + `useState` over `useMemo` because we need a
   // cleanup function and asynchronous initialization
   useEffect(() => {
-    const { progress_callback, ...transferableOptions } = options ?? {};
+    const { progress_callback, ...transferableOptions } = options ?? {}
 
-    const worker = new Worker(
-      new URL('../pipeline.ts', import.meta.url),
-      {
-        type: 'module',
-      }
-    );
+    const worker = new Worker(new URL('../pipeline', import.meta.url), {
+      type: 'module',
+    })
 
     const onMessageReceived = (e: MessageEvent<OutgoingEventData>) => {
-      const { type } = e.data;
+      const { type } = e.data
 
       switch (type) {
         case 'progress': {
-          const { data } = e.data;
-          progress_callback?.(data);
-          break;
+          const { data } = e.data
+          progress_callback?.(data)
+          break
         }
         case 'ready': {
-          setWorker(worker);
-          break;
+          setWorker(worker)
+          break
         }
       }
-    };
+    }
 
-    worker.addEventListener('message', onMessageReceived);
+    worker.addEventListener('message', onMessageReceived)
 
     worker.postMessage({
       type: 'init',
       args: [task, model, transferableOptions],
-    } satisfies InitEventData);
+    } satisfies InitEventData)
 
     return () => {
-      worker.removeEventListener('message', onMessageReceived);
-      worker.terminate();
+      worker.removeEventListener('message', onMessageReceived)
+      worker.terminate()
 
-      setWorker(undefined);
-    };
-  }, [task, model, options]);
+      setWorker(undefined)
+    }
+  }, [task, model, options])
 
   // Using `useEffect` + `useState` over `useMemo` because we need a
   // cleanup function
   useEffect(() => {
     if (!worker) {
-      return;
+      return
     }
 
     // ID to sync return values between multiple ongoing pipe executions
-    let currentId = 0;
+    let currentId = 0
 
-    const callbacks = new Map<number, (data: PipeReturnType) => void>();
+    const callbacks = new Map<number, (data: PipeReturnType) => void>()
 
     const onMessageReceived = (e: MessageEvent<OutgoingEventData>) => {
       switch (e.data.type) {
         case 'result':
-          const { id, data: serializedData } = e.data;
-          const { type, data, dims } = serializedData;
-          const output = new Tensor(type, data, dims);
-          const callback = callbacks.get(id);
+          const { id, data: serializedData } = e.data
+          const { type, data, dims } = serializedData
+          const output = new Tensor(type, data, dims)
+          const callback = callbacks.get(id)
 
           if (!callback) {
-            throw new Error(`Missing callback for pipe execution id: ${id}`);
+            throw new Error(`Missing callback for pipe execution id: ${id}`)
           }
 
-          callback(output);
-          break;
+          callback(output)
+          break
       }
-    };
+    }
 
-    worker.addEventListener('message', onMessageReceived);
+    worker.addEventListener('message', onMessageReceived)
 
     const pipe: PipeFunction = (...args) => {
       if (!worker) {
-        throw new Error('Worker unavailable');
+        throw new Error('Worker unavailable')
       }
 
-      const id = currentId++;
+      const id = currentId++
 
-      return new Promise<PipeReturnType>((resolve) => {
-        callbacks.set(id, resolve);
-        worker.postMessage({ type: 'run', id, args } satisfies RunEventData);
-      });
-    };
+      return new Promise<PipeReturnType>(resolve => {
+        callbacks.set(id, resolve)
+        worker.postMessage({ type: 'run', id, args } satisfies RunEventData)
+      })
+    }
 
-    setPipe(() => pipe);
+    setPipe(() => pipe)
 
     return () => {
-      worker?.removeEventListener('message', onMessageReceived);
-      setPipe(undefined);
-    };
-  }, [worker]);
+      worker?.removeEventListener('message', onMessageReceived)
+      setPipe(undefined)
+    }
+  }, [worker])
 
-  return pipe;
+  return pipe
 }
