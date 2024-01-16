@@ -10,7 +10,7 @@ type Props = {}
 const Hero = async (props: Props) => {
   const session = await getSession()
   return (
-    <div className='flex h-screen justify-center bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200'>
+    <div className='flex h-screen justify-center bg-gradient-to-b from-indigo-800 via-rose-400 to-amber-200'>
       <header className='absolute inset-x-0 top-0 z-50'>
         <nav
           className='flex items-center justify-between p-6 lg:px-8'
@@ -76,12 +76,12 @@ const Hero = async (props: Props) => {
             <div className='mt-10 flex items-center justify-center gap-x-6'>
               <Link
                 href='/product'
-                className='rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-teal-400 shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                className='rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-rose-400 shadow-sm hover:bg-rose-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
               >
                 Get started
               </Link>
               <a
-                href='#'
+                href='/learn-more'
                 className='text-sm font-semibold leading-6 text-white'
               >
                 Learn more <span aria-hidden='true'>→</span>

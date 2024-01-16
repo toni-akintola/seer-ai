@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${SCP.className} bg-gradient-to-b from-teal-600 via-teal-400 to-teal-200`}
+        className={`${SCP.className} bg-gradient-to-b from-indigo-800 via-rose-400 to-amber-200 `}
       >
         <SupabaseProvider>
           <Providers>

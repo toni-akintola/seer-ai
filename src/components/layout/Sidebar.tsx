@@ -36,13 +36,13 @@ const items = [
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
   },
   {
-    name: 'Talk to Seer',
+    name: 'Seer',
     href: '/product/seer',
     icon: <ApertureIcon className='h-8 w-8 text-white' />,
   },
 
   {
-    name: 'Buy Credits',
+    name: 'Donate',
     href: '/product/transaction',
     icon: <CreditCardIcon className='h-8 w-8 text-white' />,
   },
@@ -60,16 +60,16 @@ const items = [
 
 const Sidebar: React.FunctionComponent = () => {
   return (
-    <div className='grid flex-col gap-y-4 border-r border-gray-900/10 bg-teal-400 px-2 py-4 h-screen'>
-      <div className='flex flex-col justify-center space-y-3 rounded-md'>
+    <div className='grid flex-col gap-y-4 border-r border-gray-900/10 bg-indigo-800 lg:p-2 h-screen'>
+      <div className='flex flex-col justify-center space-y-3 rounded-md items-center'>
         {items.map(item => (
           <Link
             key={item.name}
             href={item.href}
-            className='flex w-full flex-row items-center justify-center md:justify-normal space-x-2 lg:space-x-5 rounded-md bg-inherit md:bg-teal-500 py-4 md:p-2 hover:bg-teal-900'
+            className='flex w-full flex-row items-center space-x-2 lg:space-x-5 rounded-md bg-inherit lg:bg-indigo-900 py-2 px-2'
           >
             {item.icon}
-            <p className='text-transparent text-sm lg:text-base font-extrabold md:text-white'>
+            <p className='text-transparent text-xs lg:text-base font-extrabold lg:text-white'>
               {item.name}
             </p>
           </Link>

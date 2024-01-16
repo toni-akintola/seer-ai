@@ -1,9 +1,8 @@
 // @ts-ignore: temp
 
 import { createClient } from '@supabase/supabase-js'
-// deno-lint-ignore no-unused-vars
-import { env, pipeline } from '@xenova/transformers'
 import { corsHeaders } from '../_shared/cors.ts'
+import { pipeline } from '@xenova/transformers'
 
 const generateEmbedding = await pipeline(
   'feature-extraction',

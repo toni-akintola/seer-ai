@@ -15,16 +15,12 @@ export interface NavBarProps {
 
 const Navbar = (props: NavBarProps) => {
   return (
-    <div className='bg-teal-400 flex border border-gray-900/10 px-4 justify-between'>
+    <div className='bg-indigo-800 flex border border-gray-900/10 px-4 py-1 justify-between'>
       <Link className='flex h-1/2 flex-row items-center space-x-4' href='/'>
-        <ApertureIcon className='h-16 w-16 text-white' />
+        <ApertureIcon className='h-12 w-12 text-white' />
         <p className='text-lg text-white font-extrabold tracking-tight'>Seer</p>
       </Link>
       <div className='flex flex-row justify-center space-x-3 rounded-md items-center'>
-        <p className='text-base text-nowrap font-semibold text-white'>
-          Credits: 500
-        </p>
-
         <Link
           className='flex w-full flex-row items-center space-x-5 rounded-md p-2 hover:bg-teal-900 '
           href='/product/account'

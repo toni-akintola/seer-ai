@@ -54,7 +54,7 @@ export function splitTreeBy(
  */
 export function processMarkdown(
   content: string,
-  maxSectionLength = 2500,
+  maxSectionLength = 500,
 ): ProcessedMd {
   const mdTree = fromMarkdown(content)
 

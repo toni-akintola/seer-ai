@@ -33,7 +33,7 @@ export default function ChatPage() {
               key={id}
               className={cn(
                 'rounded-xl bg-gray-500 text-white px-4 py-2 max-w-lg',
-                role === 'user' ? 'self-end bg-blue-600' : 'self-start',
+                role === 'user' ? 'self-end bg-indigo-800' : 'self-start',
               )}
             >
               {content}
@@ -90,7 +90,11 @@ export default function ChatPage() {
             value={input}
             onChange={handleInputChange}
           />
-          <Button type='submit' disabled={!isReady}>
+          <Button
+            type='submit'
+            className='bg-indigo-600 text-white'
+            disabled={!isReady}
+          >
             Send
           </Button>
         </form>
