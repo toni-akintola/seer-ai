@@ -1,7 +1,5 @@
 import React from 'react'
-import { CpuChipIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-import { SparklesIcon } from '@heroicons/react/24/solid'
 import { getSession } from '../server/supabase-server'
 import { ApertureIcon } from 'lucide-react'
 

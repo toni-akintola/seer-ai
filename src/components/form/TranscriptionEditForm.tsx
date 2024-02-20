@@ -114,12 +114,13 @@ const TranscriptionEditForm = (props: Props) => {
             <SelectItem value='hindi'>Hindi</SelectItem>
             <SelectItem value='indonesian'>Indonesian</SelectItem>
             <SelectItem value='thai'>Thai</SelectItem>
+            <SelectItem value='english'>English</SelectItem>
           </SelectContent>
         </Select>
       </div>
       <div className='flex items-center gap-6'>
         <button
-          className='bg-teal-400 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
+          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
           disabled={tokenSizeMessage.type !== 'success'}
           type='submit'
         >
@@ -131,7 +132,7 @@ const TranscriptionEditForm = (props: Props) => {
         </button>
         <button
           type='button'
-          className='bg-teal-400 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
+          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
           onClick={downloadHandler}
         >
           Download
