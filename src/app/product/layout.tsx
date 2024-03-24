@@ -3,6 +3,7 @@ import Sidebar from '../../components/layout/Sidebar'
 import RootLayout from '../layout'
 import { getSession } from '../server/supabase-server'
 
+export const dynamic = 'force-dynamic'
 export default async function Layout({
   children,
 }: {
