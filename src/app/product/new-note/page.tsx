@@ -15,8 +15,9 @@ const UploadNote = () => {
       <div className='h-40 flex flex-col justify-center items-center border-b pb-8'>
         <h2>Files must be converted to markdown before being uploaded. An automatic converter will be added soon.</h2>
         <Link
+        className='text-indigo-500 font-bold'
         href="https://cloudconvert.com/md-converter"
-        >To convert files into markdown, use this link</Link>
+        >To convert files into markdown, use this link.</Link>
         <FileUploadInput
           onChange={async e => {
             const selectedFile = e.target.files?.[0]
