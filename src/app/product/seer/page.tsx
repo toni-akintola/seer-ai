@@ -4,14 +4,13 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { cn } from '../../../../utils/helpers'
 import { Database } from '../../../../types_db'
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { usePipeline } from '../../../../lib/hooks/use-pipeline'
 import { useChat } from 'ai/react'
 import { ApertureIcon } from 'lucide-react'
+import { createClient } from '@/app/client/supabase-provider'
 
-export const dynamic = 'force-dynamic'
 export default function ChatPage() {
-  const supabase = createClientComponentClient<Database>()
+  const supabase = createClient()
 
   const generateEmbedding = usePipeline(
     'feature-extraction',
