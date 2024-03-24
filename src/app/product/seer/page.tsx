@@ -9,6 +9,7 @@ import { usePipeline } from '../../../../lib/hooks/use-pipeline'
 import { useChat } from 'ai/react'
 import { ApertureIcon } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
 export default function ChatPage() {
   const supabase = createClientComponentClient<Database>()
 

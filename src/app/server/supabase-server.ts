@@ -3,9 +3,10 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { cache } from 'react'
 
-export const createServerSupabaseClient = cache(() =>
-  createServerComponentClient<Database>({ cookies }),
-)
+export const createServerSupabaseClient = cache(() => {
+const cookieStore = cookies()
+return createServerComponentClient<Database>({ cookies: () => cookieStore })
+})
 
 export async function getSession() {
   const supabase = createServerSupabaseClient()
@@ -65,3 +66,14 @@ export const getActiveProductsWithPrices = async () => {
   }
   return data ?? []
 }
+
+export const isAuthenticatedServer = async () => {
+  const {
+    data: { session },
+  } = await createServerSupabaseClient().auth.getSession();
+  if (!session) {
+    return null;
+  } else {
+    return session;
+  }
+};
