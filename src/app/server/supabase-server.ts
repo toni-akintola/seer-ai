@@ -4,8 +4,8 @@ import { cookies } from 'next/headers'
 import { cache } from 'react'
 
 export const createServerSupabaseClient = cache(() => {
-const cookieStore = cookies()
-return createServerComponentClient<Database>({ cookies: () => cookieStore })
+  const cookieStore = cookies()
+  return createServerComponentClient<Database>({ cookies: () => cookieStore })
 })
 
 export async function getSession() {
@@ -70,10 +70,10 @@ export const getActiveProductsWithPrices = async () => {
 export const isAuthenticatedServer = async () => {
   const {
     data: { session },
-  } = await createServerSupabaseClient().auth.getSession();
+  } = await createServerSupabaseClient().auth.getSession()
   if (!session) {
-    return null;
+    return null
   } else {
-    return session;
+    return session
   }
-};
+}

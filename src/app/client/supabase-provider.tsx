@@ -4,7 +4,7 @@ import type { Database } from '../../../types_db'
 import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs'
 import type { SupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
-import { createBrowserClient } from "@supabase/ssr";
+import { createBrowserClient } from '@supabase/ssr'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type SupabaseContext = {
@@ -50,9 +50,8 @@ export const useSupabase = () => {
   return context
 }
 
-
 export const createClient = () =>
   createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
+  )

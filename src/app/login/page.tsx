@@ -12,7 +12,7 @@ export default function AuthUI() {
         <Auth
           supabaseClient={supabase}
           providers={['github', 'google']}
-          redirectTo={'http://localhost:3000/auth/callback'}
+          redirectTo={`${window.location.origin}/auth/callback`}
           magicLink={true}
           appearance={{
             theme: ThemeSupa,
