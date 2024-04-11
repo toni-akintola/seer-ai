@@ -1,7 +1,7 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { Button } from '@/components/old-ui/button'
+import { Input } from '@/components/old-ui/input'
 import { cn } from '../../../../utils/helpers'
 import { Database } from '../../../../types_db'
 import { usePipeline } from '../../../../lib/hooks/use-pipeline'

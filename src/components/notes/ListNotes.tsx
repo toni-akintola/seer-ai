@@ -4,7 +4,7 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { useRouter } from 'next/navigation'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { toast } from '../ui/use-toast'
+import { toast } from '../old-ui/use-toast'
 
 type Props = {}
 
