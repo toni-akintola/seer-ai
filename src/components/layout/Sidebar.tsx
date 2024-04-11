@@ -24,11 +24,11 @@ const items = [
     icon: <UploadCloudIcon className='h-8 w-8 text-white' />,
   },
 
-  {
-    name: 'New Note',
-    href: '/product/new-note',
-    icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
-  },
+  // {
+  //   name: 'New Note',
+  //   href: '/product/new-note',
+  //   icon: <PencilSquareIcon className='h-8 w-8 text-white' />,
+  // },
 
   {
     name: 'Notes',
