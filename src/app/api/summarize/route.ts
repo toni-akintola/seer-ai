@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { OpenAIStream } from '../../../../lib/openai'
+import { OpenAIStream } from '../../../lib/openai'
 
 export async function POST(request: Request) {
   const body = await request.json()

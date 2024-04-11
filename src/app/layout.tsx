@@ -3,7 +3,7 @@ import { Source_Code_Pro } from 'next/font/google'
 import './globals.css'
 import { Analytics } from '@vercel/analytics/react'
 import SupabaseProvider from './client/supabase-provider'
-import Providers from '../../lib/providers'
+import Providers from '../lib/providers'
 
 const SCP = Source_Code_Pro({
   weight: ['200', '300', '400', '700', '800', '900'],

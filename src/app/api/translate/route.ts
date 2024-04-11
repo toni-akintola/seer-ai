@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import { OpenAIStream } from '../../../../lib/openai'
+import { OpenAIStream } from '../../../lib/openai'
 
 export async function POST(request: Request) {
   // Get formData from request

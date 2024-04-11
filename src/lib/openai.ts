@@ -4,7 +4,7 @@ import {
   createParser,
 } from 'eventsource-parser'
 
-import { OpenAIStreamPayload } from '../types/openai'
+import { OpenAIStreamPayload } from '../../types/openai'
 
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const encoder = new TextEncoder()
