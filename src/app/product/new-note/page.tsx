@@ -1,7 +1,7 @@
 'use client'
 
 import { FileUploadInput } from '@/components/form/FileUploadInput'
-import { toast } from '@/components/ui/use-toast'
+import { toast } from '@/components/old-ui/use-toast'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import React from 'react'
 import { Database } from '../../../../types_db'
