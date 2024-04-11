@@ -12,11 +12,11 @@ export default function AuthUI() {
         <Auth
           supabaseClient={supabase}
           providers={['github', 'google']}
-          redirectTo={`${
-            process.env.NODE_ENV === 'development'
-              ? 'http://localhost:3000/auth/callback'
-              : 'https://seer-ai-xi.vercel.app/auth/callback'
-          }`}
+          // redirectTo={`${
+          //   process.env.NODE_ENV === 'development'
+          //     ? 'http://localhost:3000/auth/callback'
+          //     : 'https://seer-ai-xi.vercel.app/auth/callback'
+          // }`}
           magicLink={true}
           appearance={{
             theme: ThemeSupa,

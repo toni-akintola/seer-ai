@@ -12,10 +12,15 @@ import Link from 'next/link'
 import { ApertureIcon, UploadCloudIcon } from 'lucide-react'
 
 const items = [
+  // {
+  //   name: 'Home',
+  //   href: '/product',
+  //   icon: <HomeIcon className='h-8 w-8 text-white' />,
+  // },
   {
-    name: 'Home',
-    href: '/product',
-    icon: <HomeIcon className='h-8 w-8 text-white' />,
+    name: 'Seer',
+    href: '/product/seer',
+    icon: <ApertureIcon className='h-8 w-8 text-white' />,
   },
 
   {
@@ -35,12 +40,6 @@ const items = [
     href: '/product/notes',
     icon: <DocumentTextIcon className='h-8 w-8 text-white' />,
   },
-  {
-    name: 'Seer',
-    href: '/product/seer',
-    icon: <ApertureIcon className='h-8 w-8 text-white' />,
-  },
-
   {
     name: 'Donate',
     href: '/product/transaction',
