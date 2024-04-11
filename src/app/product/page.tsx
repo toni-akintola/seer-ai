@@ -26,7 +26,6 @@ const features = [
 ]
 
 const Product = async (props: Props) => {
-  const supabase = createServerComponentClient<Database>({ cookies })
   const session = await getSession()
   return (
     <>

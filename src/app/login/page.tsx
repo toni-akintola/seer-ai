@@ -1,5 +1,6 @@
 'use client'
 
+import { Button } from '@/components/ui/button'
 import { useSupabase } from '../client/supabase-provider'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -12,11 +13,11 @@ export default function AuthUI() {
         <Auth
           supabaseClient={supabase}
           providers={['github', 'google']}
-          // redirectTo={`${
-          //   process.env.NODE_ENV === 'development'
-          //     ? 'http://localhost:3000/auth/callback'
-          //     : 'https://seer-ai-xi.vercel.app/auth/callback'
-          // }`}
+          redirectTo={`${
+            process.env.NODE_ENV === 'development'
+              ? 'http://localhost:3000/'
+              : 'https://seer-ai-xi.vercel.app/'
+          }`}
           magicLink={true}
           appearance={{
             theme: ThemeSupa,
