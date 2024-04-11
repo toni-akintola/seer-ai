@@ -15,7 +15,7 @@ export default function AuthUI() {
           redirectTo={`${
             process.env.NODE_ENV === 'development'
               ? 'http://localhost:3000/auth/callback'
-              : 'https://seer-ai.vercel.app/auth/callback'
+              : 'https://seer-ai-xi.vercel.app/auth/callback'
           }`}
           magicLink={true}
           appearance={{
