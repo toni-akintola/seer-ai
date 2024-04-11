@@ -22,7 +22,7 @@ const Navbar = (props: NavBarProps) => {
       </Link>
       <div className='flex flex-row justify-center space-x-3 rounded-md items-center'>
         <Link
-          className='flex w-full flex-row items-center space-x-5 rounded-md p-2 hover:bg-teal-900 '
+          className='flex w-full flex-row items-center space-x-5 rounded-md p-2 hover:bg-indigo-900 '
           href='/product/account'
         >
           {props.image ? (
@@ -39,7 +39,7 @@ const Navbar = (props: NavBarProps) => {
           <p className='text-base font-semibold text-white'>{props.name}</p>
         </Link>
         <Link
-          className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
+          className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-indigo-900 '
           href='/'
         >
           <Cog6ToothIcon className='h-8 w-8 text-white' />
@@ -50,7 +50,7 @@ const Navbar = (props: NavBarProps) => {
           className='flex items-center'
         >
           <button
-            className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-teal-900 '
+            className='flex w-full flex-row items-center space-x-5 rounded-m p-2 hover:bg-indigo-900 '
             type='submit'
           >
             <ArrowRightCircleIcon className='h-8 w-8 text-white' />

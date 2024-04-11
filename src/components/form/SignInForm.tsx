@@ -56,7 +56,7 @@ const SignInForm = (props: Props) => {
                 //   type='email'
                 //   autoComplete='email'
                 //   required
-                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6'
+                className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ const SignInForm = (props: Props) => {
               <div className='text-sm'>
                 <Link
                   href='/'
-                  className='font-semibold text-teal-900 hover:text-teal-500'
+                  className='font-semibold text-indigo-900 hover:text-indigo-500'
                 >
                   Forgot password?
                 </Link>
@@ -95,7 +95,7 @@ const SignInForm = (props: Props) => {
           <div>
             <button
               type='submit'
-              className='flex w-full justify-center rounded-md bg-teal-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className='flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
               Sign in
             </button>
@@ -105,7 +105,7 @@ const SignInForm = (props: Props) => {
           Not a member?{' '}
           <Link
             href='/sign-up'
-            className='font-semibold leading-6 text-teal-800 hover:text-teal-500'
+            className='font-semibold leading-6 text-indigo-800 hover:text-indigo-500'
           >
             Sign up here.
           </Link>

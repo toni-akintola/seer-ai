@@ -120,7 +120,7 @@ const TranscriptionEditForm = (props: Props) => {
       </div>
       <div className='flex items-center gap-6'>
         <button
-          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
+          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-indigo-500'
           disabled={tokenSizeMessage.type !== 'success'}
           type='submit'
         >
@@ -132,7 +132,7 @@ const TranscriptionEditForm = (props: Props) => {
         </button>
         <button
           type='button'
-          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-teal-500'
+          className='bg-indigo-800 rounded-md p-2 m-4 w-1/2 text-white font-bold hover:bg-indigo-500'
           onClick={downloadHandler}
         >
           Download

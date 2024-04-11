@@ -112,7 +112,7 @@ const TranscribeForm = (props: Props) => {
                     </SelectContent>
                   </Select>
                   <button
-                    className='bg-indigo-800 rounded-md p-2 mt-4 w-full text-white font-bold hover:bg-teal-500'
+                    className='bg-indigo-800 rounded-md p-2 mt-4 w-full text-white font-bold hover:bg-indigo-500'
                     type='submit'
                   >
                     {!handling ? (
